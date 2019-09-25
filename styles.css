@@ -32,14 +32,14 @@ body{
     border: solid black 2px;
 }
 #nav{
-    border: solid black 2px;
+    
     height: 2em; 
     text-align: center;
   
 }
 
 .content{
-    border: solid black 2px;
+    
     padding: 8px 8px 8px 8px;
 }
 .button{
@@ -51,15 +51,21 @@ body{
 }
 
 input {
-align: middle;
- clear:  right;
+  /*  align: middle; */
+    clear:  right;
 }
 
 lable{
     display: inline-block;
   
 }
-.entry{
+#login {
+   width:400px; 
+   border: solid black 1px;
+   padding: 1em 1em 1em 1em;
+}
+
+footer {
+    text-align: center;
    
- 
 }

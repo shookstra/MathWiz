@@ -22,5 +22,13 @@ switch ($action) {
         include('view/login.php');
         die();
         break;
+    case 'drills' :
+        include('view/drillPage.php');
+        die();
+        break;
+      case 'tests' :
+        include('view/tests.php');
+        die();
+        break;
 }
 ?>
