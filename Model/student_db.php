@@ -36,7 +36,7 @@ public static function get_student_by_id($studentID) {
         
         $statement->closeCursor();
 
-        return $users;
+        return $students;
     }
 	
 	
