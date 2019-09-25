@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
@@ -20,6 +20,20 @@ switch ($action) {
         break;
      case 'login':
         include('view/login.php');
+        die();
+        break;
+    
+    case 'loggedin':
+        //this is for logged in. validations/checking and assigning sessions will go here. 
+        //setting variables for user/password
+        $userID = filter_input(INPUT_POST, 'uwerID');
+        //getting student ID from db
+        $id = student_db::get_student_by_id($studentID);
+        $password = filter_input(INPUT_POST, 'password');
+        //setting session for user
+        $_SESSION['loggedInUser'] = $userID;
+        
+        include('view/studentProfile.php');
         die();
         break;
     case 'drills' :
