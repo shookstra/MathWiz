@@ -1,5 +1,6 @@
 <?php
-
+require_once 'model/database.php';
+require('model/student_db.php');
 
 
 $action = filter_input(INPUT_POST, 'action');
