@@ -3,10 +3,19 @@
 //NOTES TO GO OVER:    
 //header.php, footer.php and nav.php do not work with the pages in the view folder, only on the index page
 //Need to set a standard of vsriable names to make things easier for all of us
-require_once 'model/student_db.php';
 
 session_start();
+require_once 'model/student_db.php';
+require_once 'model/teacher_db.php';
+require_once 'model/admin_db.php';
+require_once 'model/student.php';
+require_once 'model/teacher.php';
+require_once 'model/admin.php';
 
+//variables
+$errors = '';
+  
+  
 $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -37,7 +46,7 @@ switch ($action) {
         $userID = filter_input(INPUT_POST, 'userID');
         $password = filter_input(INPUT_POST, 'password');
 
-        $errors = "";
+      
 
         //getting user type from form for what kind of user is logging in
         if ($userType == 'student') {
