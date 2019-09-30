@@ -1,5 +1,8 @@
 <?php
 
+require_once 'database.php';
+require_once 'student_db.php';
+require_once 'student.php';
 
 class student_db {
     public static function select_all() {
@@ -91,14 +94,16 @@ public static function delete_by_ID($studentID) {
     }
     
 	
-    public static function validate_student_login($studentID) {
+    public static function validate_student_login($studentID, $studentPassword) {
         $db = Database::getDB();
         $query = 'SELECT *
               FROM student
-              WHERE studentID= :studentID';
+              WHERE studentID= :studentID
+              AND password = :studentPassword';
 
         $statement = $db->prepare($query);
         $statement->bindValue(':studentID', $studentID);
+        $statement->bindValue(':studentPassword', $studentPassword);
         $statement->execute();
         $value = $statement->fetch();
         
