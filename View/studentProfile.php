@@ -1,4 +1,4 @@
-<?php include 'view/header.php'; ?>
+<?php include '\xampp\htdocs\MathWiz\View\header.php'; ?>
 
     <body>
         <div id="wrapper">
@@ -9,7 +9,7 @@
            <h1>Math Drills Site</h1>
             </div>
             
-            <?php include 'view/nav.php'; ?>
+            <?php include '\xampp\htdocs\MathWiz\View/nav.php'; ?>
             <br>
             <h2>Profile</h2>
             <div class="content">
@@ -30,4 +30,4 @@
         </div>
         
         
-<?php include 'view/footer.php'; ?>
+<?php include '\xampp\htdocs\MathWiz\View/footer.php'; ?>
