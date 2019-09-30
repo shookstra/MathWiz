@@ -86,14 +86,15 @@ public static function delete_by_ID($teacherID) {
     }
     
     
-    public static function validate_teacher_login($teacherID) {
+    public static function validate_teacher_login($teacherID, $teacherPassword) {
         $db = Database::getDB();
         $query = 'SELECT *
               FROM teacher
-              WHERE teacherID= :teacherID';
+              WHERE teacherID= :teacherID AND password= :password';
 
         $statement = $db->prepare($query);
         $statement->bindValue(':teacherID', $teacherID);
+        $statement->bindValue(':password', $teacherPassword);
         $statement->execute();
         $value = $statement->fetch();
         

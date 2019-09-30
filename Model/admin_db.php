@@ -86,14 +86,15 @@ public static function delete_by_ID($adminID) {
     }
     
     
-    public static function validate_admin_login($adminID) {
+    public static function validate_admin_login($adminID, $adminPassword) {
         $db = Database::getDB();
         $query = 'SELECT *
               FROM admin
-              WHERE adminID= :adminID';
+              WHERE adminID= :adminID AND password= :adminPassword';
 
         $statement = $db->prepare($query);
         $statement->bindValue(':adminID', $adminID);
+        $statement->bindValue(':password', $adminPassword);
         $statement->execute();
         $value = $statement->fetch();
         
@@ -102,5 +103,43 @@ public static function delete_by_ID($adminID) {
         $statement->closeCursor();
 
         return $theAdmin;
+    }
+    
+    public static function get_teacher_info($adminID, $adminPassword) {
+        $db = Database::getDB();
+        $query = 'SELECT *
+              FROM admin
+              WHERE adminID= :adminID AND password= :adminPassword';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':adminID', $adminID);
+        $statement->bindValue(':password', $adminPassword);
+        $statement->execute();
+        $value = $statement->fetch();
+        
+        $theAdmin = new admin($value['adminID'], $value['password'], $value['fName'], $value['lName']);
+
+        $statement->closeCursor();
+
+        return $theAdmin;
+    }
+    
+    public static function teacher_numbers($teacherID){
+        $db = Database::getDB();
+        $query = 'SELECT COUNT(student.studentID) AS "TotalStudents", (SUM(student.additionLevel)/COUNT(student.studentID) AS "totalAdditionLevel", (SUM(InvoiceTotal)/COUNT(InvoiceNum)) AS "invoiceAvg", UserName'
+                . ' FROM invoices '
+                . 'WHERE StoreIDNum = :storeIDNum '
+                . 'GROUP BY StoreIDNum ';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':storeIDNum', $storeIDNum);
+        $statement->execute();
+        $row = $statement->fetch();
+        
+        
+        $invoiceNumbers[$row['UserName']] = new numbers(
+                    $row['UserName'], $row['invoiceTotals'], $row['invoiceAvg'], $row['invoiceCount']);
+        
+        $statement->closeCursor();
+        return $invoiceNumbers;
     }
 }

@@ -37,14 +37,19 @@ switch ($action) {
         $userID = filter_input(INPUT_POST, 'userID');
         $password = filter_input(INPUT_POST, 'password');
         
+        
         //getting user typoe from form for what kind of user is logging in
         if($userType == 'student'){
+            //getting student info from db
+            $students = student_db::get_student_by_id($userID);
             
-            //getting student ID from db
-            $student = student_db::get_student_by_id($userID);
-            //setting session for user
-            $_SESSION['loggedInUser'] = $userID;
-        
+            if($password == $students->getPassword()) {
+                //setting session for user
+                $_SESSION['loggedInUser'] = $userID;
+            } else {
+                
+            }
+  
         include('view/studentProfile.php');
         die();
         break;

@@ -25,4 +25,6 @@ class loginValidation {
     function validatePassword($password) {
         
     }
+    
+   
 }

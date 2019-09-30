@@ -4,13 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/MathWiz/index.php</file>
-            <file>file:/C:/xampp/htdocs/MathWiz/Model/database.php</file>
-            <file>file:/C:/xampp/htdocs/MathWiz/Model/student.php</file>
+            <file>file:/C:/xampp/htdocs/MathWiz/View/teacherProfile.php</file>
             <file>file:/C:/xampp/htdocs/MathWiz/Model/student_db.php</file>
-            <file>file:/C:/xampp/htdocs/MathWiz/Model/teacher.php</file>
-            <file>file:/C:/xampp/htdocs/MathWiz/Model/teacher_db.php</file>
             <file>file:/C:/xampp/htdocs/MathWiz/Model/loginValidation.php</file>
-            <file>file:/C:/xampp/htdocs/MathWiz/Model/database_error.php</file>
+            <file>file:/C:/xampp/htdocs/MathWiz/Model/admin_db.php</file>
         </group>
     </open-files>
 </project-private>
