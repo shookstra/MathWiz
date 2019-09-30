@@ -1,64 +1,64 @@
 <?php
 
-        
-class teacher_db {
+class admin_db {
+    
     
     public static function select_all() {
         $db = Database::getDB();
 
-        $queryUsers = 'SELECT * FROM teacher';
+        $queryUsers = 'SELECT * FROM admin';
         $statement = $db->prepare($queryUsers);
         $statement->execute();
         $rows = $statement->fetchAll();
-        $teacher = [];
+        $admin = [];
 
         foreach ($rows as $value) {
-            $teacher[$value['teacherID']] = new teacher($value['teacherID'], $value['password'], $value['$fName'], $value['lName']);
+            $admin[$value['adminID']] = new admin($value['adminID'], $value['password'], $value['$fName'], $value['lName']);
         }
         $statement->closeCursor();
 
-        return $teacher;
+        return $admin;
     }
 	
 	
 	
-public static function get_teacher_by_id($teacherID) {
+public static function get_admin_by_id($adminID) {
         $db = Database::getDB();
         $query = 'SELECT *
-              FROM teacher
-              WHERE teacherID= :teacherID';
+              FROM admin
+              WHERE adminID= :adminID';
 
         $statement = $db->prepare($query);
-        $statement->bindValue(':teacherID', $teacherID);
+        $statement->bindValue(':adminID', $adminID);
         $statement->execute();
         $value = $statement->fetch();
         
-        $teacher = new teacher($value['teacherID'], $value['password'], $value['$fName'], $value['lName']);
+        $admin = new admin($value['adminID'], $value['password'], $value['$fName'], $value['lName']);
         
         $statement->closeCursor();
 
-        return $teacher;
+        return $admin;
     }
 	
 	
 	
 	
 	
-public static function update_teacher($teacherID, $password, $fName, $lName) {
+public static function update_admin($adminID, $password, $fName, $lName) {
         
 
         $db = Database::getDB();
-        $query = $query = 'UPDATE teacher
+        $query = $query = 'UPDATE admin
               SET fName = :fName,
-                  lName = :studentLName,
-                  password = :lName,
-                WHERE teacherID = :teacherID';
+                  lName = :lName,
+                  password = :password,
+                WHERE adminID = :adminID';
         try {
             $statement = $db->prepare($query);
             $statement->bindValue(':password', $password);
             $statement->bindValue(':fName', $fName);
             $statement->bindValue(':lName', $lName);
-            $statement->bindValue(':teacherID', $teacherID);
+            $statement->bindValue(':adminID', $adminID);
             $row_count = $statement->execute();
             $statement->closeCursor();
             return $row_count;
@@ -70,12 +70,12 @@ public static function update_teacher($teacherID, $password, $fName, $lName) {
 	
 	
 	
-public static function delete_by_ID($teacherID) {
+public static function delete_by_ID($adminID) {
         $db = Database::getDB();
-        $query = 'DELETE from teacher WHERE teacherID= :teacherID';
+        $query = 'DELETE from teacher WHERE adminID= :adminID';
         try {
             $statement = $db->prepare($query);
-            $statement->bindValue(':teacherID', $teacherID);
+            $statement->bindValue(':adminID', $adminID);
             $row_count = $statement->execute();
             $statement->closeCursor();
             return $row_count;
@@ -86,22 +86,21 @@ public static function delete_by_ID($teacherID) {
     }
     
     
-    public static function validate_teacher_login($teacherID) {
+    public static function validate_admin_login($adminID) {
         $db = Database::getDB();
         $query = 'SELECT *
-              FROM teacher
-              WHERE teacherID= :teacherID';
+              FROM admin
+              WHERE adminID= :adminID';
 
         $statement = $db->prepare($query);
-        $statement->bindValue(':teacherID', $teacherID);
+        $statement->bindValue(':adminID', $adminID);
         $statement->execute();
         $value = $statement->fetch();
         
-        $theTeacher = new teacher($value['teacherID'], $value['password'], $value['fName'], $value['lName']);
+        $theAdmin = new admin($value['adminID'], $value['password'], $value['fName'], $value['lName']);
 
         $statement->closeCursor();
 
-        return $theTeacher;
+        return $theAdmin;
     }
-
 }
