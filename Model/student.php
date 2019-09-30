@@ -1,36 +1,18 @@
 <?php
-        studentID;
-	studentPWord;
-	studentFName;
-	studentLName;
-	studentAddLevel;
-	studentSubLevel;
-	studentMultLevel;
-	studentDivLevel;
-	teacherID;
-        
-        $studentID;
-	$studentPWord;
-	$studentFName;
-	$studentLName;
-	$studentAddLevel;
-	$studentSubLevel;
-	$studentMultLevel;
-	$studentDivLevel;
-	$teacherID;
+
 
 class student {
-    private $studentID, $studentPWord, $studentFName,  $studentLName, $studentAddLevel, $studentSubLevel, $studentMultLevel,  $studentDivLevel, $teacherID;
-    function __construct($studentID, $studentPWord, $studentFName, $studentLName,  $studentAddLevel, $studentSubLevel, $studentMultLevel,  $studentDivLevel, $teacherID) {
+    private $studentID, $password, $fName,  $lName, $additionLevel, $subtractionLevel, $multiplicationLevel,  $divisionLevel, $teacherID;
+    function __construct($studentID, $password, $fName, $lName,  $additionLevel, $subtractionLevel, $multiplicationLevel,  $divisionLevel, $teacherID) {
         
         $this->studentID = $studentID;
-        $this->studentPWord = $studentPWord;
-        $this->studentFName = $studentFName;
-        $this->studentLName = $studentLName;
-        $this->studentAddLevel = $studentAddLevel;
-        $this->studentSubLevel = $studentSubLevel;
-        $this->studentMultLevel = $studentMultLevel;
-        $this->studentDivLevel = $studentDivLevel;
+        $this->password = $password;
+        $this->fName = $fName;
+        $this->lName = $lName;
+        $this->additionLevel = $additionLevel;
+        $this->subtractionLevel = $subtractionLevel;
+        $this->multiplicationLevel = $multiplicationLevel;
+        $this->divisionLevel = $divisionLevel;
         $this->teacherID = $teacherID;
         
         
@@ -39,32 +21,32 @@ class student {
         return $this->studentID;
     }
 
-    function getStudentPWord() {
-        return $this->studentPWord;
+    function getPassword() {
+        return $this->password;
     }
 
-    function getStudentFName() {
-        return $this->studentFName;
+    function getFName() {
+        return $this->fName;
     }
 
-    function getStudentLName() {
-        return $this->studentLName;
+    function getLName() {
+        return $this->lName;
     }
 
-    function getStudentAddLevel() {
-        return $this->studentAddLevel;
+    function getAdditionLevel() {
+        return $this->additionLevel;
     }
 
-    function getStudentSubLevel() {
-        return $this->studentSubLevel;
+    function getSubtractionLevel() {
+        return $this->subtractionLevel;
     }
     
-    function getStudentMultLevel() {
-        return $this->studentMultLevel;
+    function getMultiplicationLevel() {
+        return $this->multiplicationLevel;
     }
 
-    function getStudentDivLevel() {
-        return $this->studentDivLevel;
+    function getDivisionLevel() {
+        return $this->divisionLevel;
     }
 
     function getTeacherID() {
@@ -77,32 +59,32 @@ class student {
         $this->studentID = $studentID;
     }
 
-    function setStudentPWord($studentPWord) {
-        $this->studentPWord = $studentPWord;
+    function setPassword($password) {
+        $this->password = $password;
     }
 
-    function setStudentFName($studentFName) {
-        $this->studentFName = $studentFName;
+    function setFName($fName) {
+        $this->fName = $fName;
     }
 
-    function setStudentLName($studentLName) {
-        $this->studentLName = $studentLName;
+    function setLName($lName) {
+        $this->lName = $lName;
     }
 
-    function setStudentAddLevel($studentAddLevel) {
-        $this->studentAddLevel = $studentAddLevel;
+    function setAdditionLevel($additionLevel) {
+        $this->additionLevel = $additionLevel;
     }
 
-    function setStudentSubLevel($studentSubLevel) {
-        $this->studentSubLevel = $studentSubLevel;
+    function setSubtractionLevel($subtractionLevel) {
+        $this->subtractionLevel = $subtractionLevel;
     }
     
-    function setStudentMultLevel($studentMultLevel) {
-        $this->studentMultLevel = $studentMultLevel;
+    function setMultiplicationLevel($multiplicationLevel) {
+        $this->multiplicationLevel = $multiplicationLevel;
     }
 
-    function setStudentDivLevel($studentDivLevel) {
-        $this->studentDivLevel = $studentDivLevel;
+    function setDivisionLevel($divisionLevel) {
+        $this->divisionLevel = $divisionLevel;
     }
 
     function setTeacherID($teacherID) {

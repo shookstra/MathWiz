@@ -13,7 +13,12 @@
         
                 <form action="index.php" method="POST">
                 <input type="hidden" name="action" value="loggedin">
-                <label>User Name: </label><input class="entry" type="text" name="username"><br><br>
+                <select name='userType'>
+                    <option value="student" selected>Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="admin">Administrator</option>
+                </select><br>
+                <label>User ID: </label><input class="entry" type="text" name="userID"><br><br>
                 <label>Password: </label><input class="entry" type="text" name="password"><br><br>
                 <form action="index.php" method="POST">
                     <input type="hidden" value="viewStudent" name="action">

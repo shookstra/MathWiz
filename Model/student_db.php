@@ -12,11 +12,11 @@ class student_db {
         $students = [];
 
         foreach ($rows as $value) {
-            $students[$value['studentID']] = new student($value['studentID'], $value['pWord'], $value['studentFName'], $value['studentAddLevel'], $value['studentSubLevel'], $value['studentMultLevel'],  $value['studentDivLevel'], $value['teacherID']);
+            $students[$value['studentID']] = new student($value['studentID'], $value['password'], $value['fName'], $value['lName'], $value['additionLevel'], $value['subtractionLevel'],  $value['multiplicationLevel'], $value['divisionLevel'], $value['teacherID']);
         }
         $statement->closeCursor();
 
-        return $users;
+        return $students;
     }
 	
 	
@@ -32,7 +32,7 @@ public static function get_student_by_id($studentID) {
         $statement->execute();
         $value = $statement->fetch();
         
-        $students = new student($value['studentID'], $value['studentFName'], $value['studentLName'], $value['studentAddLevel'], $value['studentSubLevel'], $value['studentMultLevel'],  $value['studentDivLevel'], $value['teacherID']);
+        $students = new student($value['studentID'], $value['password'], $value['fName'], $value['lName'], $value['additionLevel'], $value['subtractionLevel'],  $value['multiplicationLevel'], $value['divisionLevel'], $value['teacherID']);
         
         $statement->closeCursor();
 
@@ -41,29 +41,29 @@ public static function get_student_by_id($studentID) {
 	
 	
 	
-	
-	
-public static function update_student($studentID, $studentFName, $studentLName, $studentAddLevel, $studentSubLevel, $studentMultLevel, $studentDivLevel) {
+public static function update_student($studentID, $fName, $lName, $additionLevel, $subtractionLevel, $multiplicationLevel, $divisionLevel, $teacherID) {
         
 
         $db = Database::getDB();
         $query = $query = 'UPDATE student
-              SET fName = :studentFName,
-                  lName = :studentLName,
-                  email = :studentAddLevel,
-                  uName = :studentSubLevel,
-                  uImage = :studentMultLevel,
-				  uImage = :studentDivLevel
+              SET fName = :fName,
+                  lName = :lName,
+                  additionLevel = :additionLevel,
+                  subtractionLevel = :subtractionLevel,
+                  multiplicationLevel = :multiplicationLevel,
+                  divisionLevel = :divisionLevel,
+                  teacherID = :teacherID
                 WHERE studentID = :studentID';
         try {
             $statement = $db->prepare($query);
-            $statement->bindValue(':studentFName', $studentFName);
-            $statement->bindValue(':studentLName', $studentLName);
-            $statement->bindValue(':studentAddLevel', $studentAddLevel);
-            $statement->bindValue(':studentSubLevel', $studentSubLevel);
-            $statement->bindValue(':studentMultLevel', $studentMultLevel);
-            $statement->bindValue(':studentDivLevel', $studentDivLevel);
-            $statement->bindValue(':studentID', $studentID);
+            $statement->bindValue(':fName', $fName);
+            $statement->bindValue(':lName', $lName);
+            $statement->bindValue(':additionLevel', $additionLevel);
+            $statement->bindValue(':subtractionLevel', $subtractionLevel);
+            $statement->bindValue(':multiplicationLevel', $multiplicationLevel);
+            $statement->bindValue(':divisionLevel', $divisionLevel);
+            $statement->bindValue(':studentDivLevel', $teacherID);
+            $statement->bindValue(':teacherID', $studentID);
             $row_count = $statement->execute();
             $statement->closeCursor();
             return $row_count;
@@ -77,7 +77,7 @@ public static function update_student($studentID, $studentFName, $studentLName, 
 	
 public static function delete_by_ID($studentID) {
         $db = Database::getDB();
-        $query = 'DELETE from user WHERE studentID= :studentID';
+        $query = 'DELETE from student WHERE studentID= :studentID';
         try {
             $statement = $db->prepare($query);
             $statement->bindValue(':studentID', $studentID);
@@ -102,11 +102,30 @@ public static function delete_by_ID($studentID) {
         $statement->execute();
         $value = $statement->fetch();
         
-        $theStudent = new student($value['studentID'], $value['studentFName'], $value['studentLName'], $value['studentAddLevel'], $value['studentSubLevel'], $value['studentMultLevel'], $value['studentDivLevel'], $value['studentPWord'], $value['teacherID']);
-
+        $theStudent = new student($value['studentID'], $value['password'], $value['fName'], $value['lName'], $value['additionLevel'], $value['subtractionLevel'],  $value['multiplicationLevel'], $value['divisionLevel'], $value['teacherID']);
+        
         $statement->closeCursor();
 
         return $theStudent;
+    }
+    
+    public static function get_students_by_teacher_id($teacherID) {
+        $db = Database::getDB();
+        $query = 'SELECT *
+              FROM student
+              WHERE teacherID= :teacherID';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':teacherID', $teacherID);
+        $statement->execute();
+        $value = $statement->fetch();
+        
+        foreach ($rows as $value) {
+            $students[$value['studentID']] = new student($value['studentID'], $value['password'], $value['fName'], $value['lName'], $value['additionLevel'], $value['subtractionLevel'],  $value['multiplicationLevel'], $value['divisionLevel'], $value['teacherID']);
+        }
+        $statement->closeCursor();
+
+        return $students;
     }
 }
 
