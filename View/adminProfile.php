@@ -4,30 +4,30 @@
     <body>
        <main>
 
-                <h2>Welcome, <?php echo $teacher->getFName(); ?></h2>
+                <h2>Welcome, <?php echo $admin->getFName(); ?></h2>
                 
                 <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
                 
                 <table>
                     <tr>
-                        <th>Student First Name</th>
-                        <th>Student Last Name</th>
-                        <th>Student ID Number</th>
-                        <th>Addition Level</th>
-                        <th>Subtraction Level</th>
-                        <th>Multiplication Level</th>
-                        <th>Division Level</th>
+                        <th>Teacher First Name</th>
+                        <th>Teacher Last Name</th>
+                        <th>Teacher ID Number</th>
+                        <th>Students Addition Level Average</th>
+                        <th>Students Subtraction Level Average</th>
+                        <th>Students Multiplication Level Average</th>
+                        <th>Students Division Level Average</th>
                     </tr>
-                    <?php foreach ($students as $single) : ?>
+                    <?php foreach ($admins as $single) : ?>
                         <tr>
 
                         <td><?php echo $single->getFName(); ?></td>
                         <td><?php echo $single->getLName(); ?></td>
-                        <td><?php echo $single->getStudentID(); ?></td>
-                        <td><?php echo $single->getAdditionLevel(); ?></td>
-                        <td><?php echo $single->getSubtractionLevel(); ?></td>
-                        <td><?php echo $single->getMultiplicationLevel(); ?></td>
-                        <td><?php echo $single->getDivisionLevel(); ?></td>
+                        <td><?php echo $single->getTeacherID(); ?></td>
+                        <td><?php echo $single->getAdditionLevelAvg(); ?></td>
+                        <td><?php echo $single->getSubtractionLevelAvg(); ?></td>
+                        <td><?php echo $single->getMultiplicationLevelAvg(); ?></td>
+                        <td><?php echo $single->getDivisionLevelAvg(); ?></td>
                         <td><form action="index.php" method="post">
                                 <input type="hidden" name="action"
                                        value="view_invoice">

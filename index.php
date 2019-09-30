@@ -36,6 +36,7 @@ switch ($action) {
         //getting ID from form
         $userID = filter_input(INPUT_POST, 'userID');
         $password = filter_input(INPUT_POST, 'password');
+
         $errors = "";
 
         //getting user type from form for what kind of user is logging in
@@ -55,6 +56,7 @@ switch ($action) {
             die();
             break;
         } else if ($userType == 'teacher') {
+
             //getting teacher ID from db
             $teacher = teacher_db::get_teacher_by_id($userID);
             //setting session for user
