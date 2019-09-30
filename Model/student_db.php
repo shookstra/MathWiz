@@ -108,5 +108,24 @@ public static function delete_by_ID($studentID) {
 
         return $theStudent;
     }
+    
+    public static function get_students_by_teacher_id($teacherID) {
+        $db = Database::getDB();
+        $query = 'SELECT *
+              FROM student
+              WHERE teacherID= :teacherID';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':teacherID', $teacherID);
+        $statement->execute();
+        $value = $statement->fetch();
+        
+        foreach ($rows as $value) {
+            $students[$value['studentID']] = new student($value['studentID'], $value['password'], $value['fName'], $value['lName'], $value['additionLevel'], $value['subtractionLevel'],  $value['multiplicationLevel'], $value['divisionLevel'], $value['teacherID']);
+        }
+        $statement->closeCursor();
+
+        return $students;
+    }
 }
 
