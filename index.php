@@ -321,5 +321,10 @@ switch ($action) {
         session_destroy();
         header("Refresh:0");
         include("view/home.php");
+
+    case 'changePass':
+        include('view/changePass.php');
+        die();
+        break;
 }
 ?>
