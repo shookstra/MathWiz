@@ -65,8 +65,8 @@ public static function update_student($studentID, $fName, $lName, $additionLevel
             $statement->bindValue(':subtractionLevel', $subtractionLevel);
             $statement->bindValue(':multiplicationLevel', $multiplicationLevel);
             $statement->bindValue(':divisionLevel', $divisionLevel);
-            $statement->bindValue(':studentDivLevel', $teacherID);
-            $statement->bindValue(':teacherID', $studentID);
+            $statement->bindValue(':teacherID', $teacherID);
+            $statement->bindValue(':studentID', $studentID);
             $row_count = $statement->execute();
             $statement->closeCursor();
             return $row_count;

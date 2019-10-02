@@ -2,49 +2,41 @@
 
 
     <body>
-        <main>
 
-                <h2>Congratulations, <?php echo $userID->getFName(); ?></h2>
+            <div id="wrapper">
+                <h2>Congratulations, <?php echo $_SESSION['loggedInUser']->getFName(); ?></h2>
                 
                 <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
                 
+                <p>Here is where you fall now</p><br>
                 <table>
                     <tr>
-                        <th>Student First Name</th>
-                        <th>Student Last Name</th>
-                        <th>Student ID Number</th>
-                        <th>Addition Level</th>
-                        <th>Subtraction Level</th>
-                        <th>Multiplication Level</th>
-                        <th>Division Level</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>ID Number</th>
+                        <th>Add Level</th>
+                        <th>Sub Level</th>
+                        <th>Mult Level</th>
+                        <th>Div Level</th>
                     </tr>
-                    <?php foreach ($student as $single) : ?>
+                    
                         <tr>
 
-                        <td><?php echo $single->getFName(); ?></td>
-                        <td><?php echo $single->getLName(); ?></td>
-                        <td><?php echo $single->getStudentID(); ?></td>
-                        <td><?php echo $single->getAdditionLevel(); ?></td>
-                        <td><?php echo $single->getSubtractionLevel(); ?></td>
-                        <td><?php echo $single->getMultiplicationLevel(); ?></td>
-                        <td><?php echo $single->getDivisionLevel(); ?></td>
-                        <td><form action="index.php" method="post">
-                                <input type="hidden" name="action"
-                                       value="view_invoice">
-                                <input type="hidden" name="invoiceNum"
-                                       value="<?php echo $single->getStudentID(); ?>">
-                                <input type="submit" value="View Student">
-                            </form></td>
+                        <td><?php echo $_SESSION['loggedInUser']->getFName(); ?></td>
+                        <td><?php echo $_SESSION['loggedInUser']->getLName(); ?></td>
+                        <td><?php echo $_SESSION['loggedInUser']->getStudentID(); ?></td>
+                        <td><?php echo $_SESSION['loggedInUser']->getAdditionLevel(); ?></td>
+                        <td><?php echo $_SESSION['loggedInUser']->getSubtractionLevel(); ?></td>
+                        <td><?php echo $_SESSION['loggedInUser']->getMultiplicationLevel(); ?></td>
+                        <td><?php echo $_SESSION['loggedInUser']->getDivisionLevel(); ?></td>
                         </tr>
-                    <?php endforeach; ?> 
+
 
                 </table><br>
                 
-                
+            </div>  
                 
 
-        </main>
-  
         
         
 <?php include '/xampp/htdocs/mathwiz/view/footer.php'; ?>

@@ -101,8 +101,19 @@ switch ($action) {
         die();
         break;
     case 'baseline' :
-        $userID = $_SESSION['loggedInUser'];
-        $userID = student_db::get_student_by_id($userID);
+        $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
+        
+        
+        
+      
+        
+        
+        include('view/baseline.php');
+        die();
+        break;
+    
+    case 'results' :
+        $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
         
         $addOneCount = 0;
 	$addTwoCount = 0;
@@ -314,17 +325,7 @@ switch ($action) {
 	($divThreeCount >= 3 || $divTwoCount >= 3 ? $divLevel = 3 :
 		($divOneCount >= 3 ? $divLevel = 2 : $divLevel = 1));
         
-        $userID = student_db::update_student($userID, $fName, $lName, $addLevel, $subLevel, $multLevel, $divLevel, $teacherID);
-        
-        
-        include('view/baseline.php');
-        die();
-        break;
-    
-    case 'results' :
-        $userID = $_SESSION['loggedInUser'];
-        $userID = student_db::get_student_by_id($userID);
-        
+        student_db::update_student($_SESSION['loggedInUser']->getStudentID(), $_SESSION['loggedInUser']->getFName(), $_SESSION['loggedInUser']->getLName(), $_SESSION['loggedInUser']->getAdditionLevel(), $_SESSION['loggedInUser']->getSubtractionLevel(), $_SESSION['loggedInUser']->getMultiplicationLevel(), $_SESSION['loggedInUser']->getDivisionLevel(), $_SESSION['loggedInUser']->getTeacherID());
         
         include('view/results.php');
         die();
