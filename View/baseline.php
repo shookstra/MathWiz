@@ -364,7 +364,7 @@
                     <?php endforeach; ?>
                         
                     <form action="index.php" method="post">
-                        <input type="hidden" name="action" value="results">
+                        <input type="hidden" name="action" value="commitResults">
                         <input type="submit" value="Submit Answers">
                     </form>
         </div>

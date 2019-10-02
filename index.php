@@ -1,8 +1,6 @@
 <?php
 
-//NOTES TO GO OVER:    
-//header.php, footer.php and nav.php do not work with the pages in the view folder, only on the index page
-//Need to set a standard of vsriable names to make things easier for all of us
+
 require_once 'model/student_db.php';
 require_once 'model/teacher_db.php';
 require_once 'model/admin_db.php';
@@ -10,14 +8,12 @@ require_once 'model/student.php';
 require_once 'model/teacher.php';
 require_once 'model/admin.php';
 
-
 session_start();
 
 
 //variables
 $errors = '';
-  
-  
+
 $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -40,7 +36,7 @@ switch ($action) {
         break;
 
     case 'loggedin':
-        //this is for logged in. validations/checking and assigning sessions will go here. 
+        //this is for logged in. validations/checking and assigning sessions will go here.
         //setting variables for user/password
         //getting the user type from the drop down menu
         $userType = filter_input(INPUT_POST, 'userType');
@@ -57,18 +53,18 @@ switch ($action) {
 //            echo var_dump($userType);
 //            echo var_dump($userID);
 //            echo var_dump($password);
-            
-            if ($password == null || $userID == null){
+
+            if ($password == null || $userID == null) {
                 $errors = "Cannot have missing inputs.";
                 include('view/login.php');
             } else if ($password == $student->getPassword()) {
                 //setting session for user
                 $_SESSION['loggedInUser'] = $student;
-                include('view/studentProfile.php');                
+                include('view/studentProfile.php');
             } else {
                 $errors = "Incorrect login.";
                 include('view/login.php');
-            }            
+            }
             die();
             break;
         } else if ($userType == 'teacher') {
@@ -112,7 +108,7 @@ switch ($action) {
         die();
         break;
     
-    case 'results' :
+    case 'commitResults' :
         $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
         
         $addOneCount = 0;
@@ -247,6 +243,7 @@ switch ($action) {
 	(empty($ansEntSubTwo4) ? $errorMessage['ansEntSubTwo4'] = 'Please enter an answer' :
 		($ansEntSubTwo4 == $subTwoQuestions["72-58"] ?  $subTwoCount++ : $errorMessage['ansEntSubTwo4'] = 'Incorrect'));
 
+
 	(empty($ansEntSubThree1) ? $errorMessage['ansEntSubThree1'] = 'Please enter an answer' : 
 		($ansEntSubThree1 == $subThreeQuestions["333-102"] ?  $subThreeCount++ : $errorMessage['ansEntSubThree1'] = 'Incorrect'));
 	(empty($ansEntSubThree2) ? $errorMessage['ansEntSubThree2'] = 'Please enter an answer' : 
@@ -325,9 +322,20 @@ switch ($action) {
 	($divThreeCount >= 3 || $divTwoCount >= 3 ? $divLevel = 3 :
 		($divOneCount >= 3 ? $divLevel = 2 : $divLevel = 1));
         
-        student_db::update_student($_SESSION['loggedInUser']->getStudentID(), $_SESSION['loggedInUser']->getFName(), $_SESSION['loggedInUser']->getLName(), $_SESSION['loggedInUser']->getAdditionLevel(), $_SESSION['loggedInUser']->getSubtractionLevel(), $_SESSION['loggedInUser']->getMultiplicationLevel(), $_SESSION['loggedInUser']->getDivisionLevel(), $_SESSION['loggedInUser']->getTeacherID());
+        student_db::update_student($_SESSION['loggedInUser']->getStudentID(), $_SESSION['loggedInUser']->getFName(), $_SESSION['loggedInUser']->getLName(), $addLevel, $subLevel, $multLevel, $divLevel, $_SESSION['loggedInUser']->getTeacherID());
         
         include('view/results.php');
+        die();
+        break;
+    case 'results';
+        
+    case 'logout':
+        session_destroy();
+        header("Refresh:0");
+        include("view/home.php");
+
+    case 'changePass':
+        include('view/changePass.php');
         die();
         break;
 }

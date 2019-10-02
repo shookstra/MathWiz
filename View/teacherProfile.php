@@ -2,12 +2,16 @@
 
 
     <body>
-       <main>
-
+       <div id="wrapper">
+            
+            <div id="heading"> 
+           <h1>Math Drills Site</h1>
+            </div>
+             <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
+            <br>
                 <h2>Welcome, <?php echo $teacher->getFName(); ?></h2>
                 
-                <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
-                
+                <div class="content">
                 <table>
                     <tr>
                         <th>Student First Name</th>
@@ -40,7 +44,7 @@
 
                 </table><br>
 
-            </main>
+            </div>
   
         
         
