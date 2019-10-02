@@ -1,4 +1,4 @@
-<?php // echo var_dump($_SESSION)    ?>
+<?php // echo var_dump($_SESSION)         ?>
 <div id="nav">
 
     <table>
@@ -28,28 +28,42 @@
                             <input type="hidden" value="viewStudent" name="action">
                             <input class="button" type="submit" value="Profile">
                         </form>
-                    <?php } ?>
+                    </td>
                 <?php } ?>
+            <?php } ?>
 
-            </td>
-            <td>
-                <form action="index.php" method="post">
-                    <input type="hidden" value="drills" name="action">
-                    <input class="button" type="submit" value="Drills">
-                </form>
-            </td>
-            <td>
-                <form action="index.php" method="post">
-                    <input type="hidden" value="tests" name="action">
-                    <input class="button" type="submit" value="Master Tests">
-                </form>
-            </td>
-            <td>
-                <form action="index.php" method="post">
-                    <input type="hidden" value="baseline" name="action">
-                    <input class="button" type="submit" value="Baseline Test">
-                </form>
-            </td>
+            <?php if (isset($_SESSION)) { ?>
+                <?php if (!empty($_SESSION['loggedInUser'])) { ?>
+                    <td>
+                        <form action="index.php" method="post">
+                            <input type="hidden" value="drills" name="action">
+                            <input class="button" type="submit" value="Drills">
+                        </form>
+                    </td>
+                <?php } ?>
+            <?php } ?>
+
+            <?php if (isset($_SESSION)) { ?>
+                <?php if (!empty($_SESSION['loggedInUser'])) { ?>
+                    <td>
+                        <form action="index.php" method="post">
+                            <input type="hidden" value="tests" name="action">
+                            <input class="button" type="submit" value="Master Tests">
+                        </form>
+                    </td>
+                <?php } ?>
+            <?php } ?>
+
+            <?php if (isset($_SESSION)) { ?>
+                <?php if (!empty($_SESSION['loggedInUser'])) { ?>
+                    <td>
+                        <form action="index.php" method="post">
+                            <input type="hidden" value="baseline" name="action">
+                            <input class="button" type="submit" value="Baseline Test">
+                        </form>
+                    </td>
+                <?php } ?>
+            <?php } ?>
 
             <?php if (isset($_SESSION['loggedInUser'])) { ?>
                 <td>
