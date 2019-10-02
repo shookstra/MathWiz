@@ -100,7 +100,7 @@
 
 <?php include '/xampp/htdocs/mathwiz/view/header.php'; ?>
     
-<main>
+
         <div id="wrapper">
 
             <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
@@ -113,9 +113,9 @@
         <table>
                     <tr>
                         <th>Addition Level 1</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -128,15 +128,15 @@
                         <td>&nbsp;</td>
                         <td><form action="index.php" method="post">
                             <input type="text" name="<?php echo ++$a; ?>">
-                        </form></td>
+                            </form></td>
                         </tr>
                     <?php endforeach; ?> 
                         
                     <tr>
                         <th>Addition Level 2</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -155,9 +155,9 @@
                     
                     <tr>
                         <th>Addition Level 3</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -176,9 +176,9 @@
         
                     <tr>
                         <th>Subtraction Level 1</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -197,9 +197,9 @@
                         
                     <tr>
                         <th>Subtraction Level 2</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -218,9 +218,9 @@
                         
                     <tr>
                         <th>Subtraction Level 3</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -239,9 +239,9 @@
                         
                     <tr>
                         <th>Multiplication Level 1</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -260,9 +260,9 @@
                         
                     <tr>
                         <th>Multiplication Level 2</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -281,9 +281,9 @@
                         
                     <tr>
                         <th>Multiplication Level 3</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -302,9 +302,9 @@
                         
                     <tr>
                         <th>Division Level 1</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -323,9 +323,9 @@
                         
                     <tr>
                         <th>Division Level 2</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -344,9 +344,9 @@
                         
                     <tr>
                         <th>Division Level 3</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Questions</th>
-                        <td>&nbsp;</td>
+                        <th>&nbsp;</th>
                         <th>Answer</th>
                         
                     </tr>
@@ -362,7 +362,12 @@
                             </form></td>
                         </tr>
                     <?php endforeach; ?>
+                        
+                    <form action="index.php" method="post">
+                        <input type="hidden" name="action" value="results">
+                        <input type="submit" value="Submit Answers">
+                    </form>
         </div>
-</main>    
+  
         
 <?php include '/xampp/htdocs/mathwiz/view/footer.php'; ?>

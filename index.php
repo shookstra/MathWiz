@@ -95,7 +95,7 @@ switch ($action) {
         break;
     case 'baseline' :
         $userID = $_SESSION['loggedInUser'];
-        $userID = student_db::get_student($userID);
+        $userID = student_db::get_student_by_id($userID);
         
         $addOneCount = 0;
 	$addTwoCount = 0;
@@ -110,79 +110,79 @@ switch ($action) {
 	$divTwoCount = 0;
 	$divThreeCount = 0;
 	
-	AddOne;
+	/*AddOne*/
 	$ansEntAddOne1 = filter_input(INPUT_POST, 'ansAddOne1');
 	$ansEntAddOne2 = filter_input(INPUT_POST, 'ansAddOne2');
 	$ansEntAddOne3 = filter_input(INPUT_POST, 'ansAddOne3');
 	$ansEntAddOne4 = filter_input(INPUT_POST, 'ansAddOne4');
 	
-	AddTwo;
+	/*AddTwo;*/
 	$ansEntAddTwo1 = filter_input(INPUT_POST, 'ansAddTwo1');
 	$ansEntAddTwo2 = filter_input(INPUT_POST, 'ansAddTwo2');
 	$ansEntAddTwo3 = filter_input(INPUT_POST, 'ansAddTwo3');
 	$ansEntAddTwo4 = filter_input(INPUT_POST, 'ansAddTwo4');
 	
-	AddThree;
-	$ansEntAddThree1 = filter_input(INPUT_Post, 'ansAddThree1');
-	$ansEntAddThree2 = filter_input(INPUT_Post, 'ansAddThree2');
-	$ansEntAddThree3 = filter_input(INPUT_Post, 'ansAddThree3');
-	$ansEntAddThree4 = filter_input(INPUT_Post, 'ansAddThree4');
+	/*AddThree;*/
+	$ansEntAddThree1 = filter_input(INPUT_POST, 'ansAddThree1');
+	$ansEntAddThree2 = filter_input(INPUT_POST, 'ansAddThree2');
+	$ansEntAddThree3 = filter_input(INPUT_POST, 'ansAddThree3');
+	$ansEntAddThree4 = filter_input(INPUT_POST, 'ansAddThree4');
 	
-	SubOne;
+	/*SubOne;*/
 	$ansEntSubOne1 = filter_input(INPUT_POST, 'ansSubOne1');
 	$ansEntSubOne2 = filter_input(INPUT_POST, 'ansSubOne2');
 	$ansEntSubOne3 = filter_input(INPUT_POST, 'ansSubOne3');
 	$ansEntSubOne4 = filter_input(INPUT_POST, 'ansSubOne4');
 	
-	SubTwo;
+	/*SubTwo;*/
 	$ansEntSubTwo1 = filter_input(INPUT_POST, 'ansSubTwo1');
 	$ansEntSubTwo2 = filter_input(INPUT_POST, 'ansSubTwo2');
 	$ansEntSubTwo3 = filter_input(INPUT_POST, 'ansSubTwo3');
 	$ansEntSubTwo4 = filter_input(INPUT_POST, 'ansSubTwo4');
 	
-	SubThree;
+	/*SubThree;*/
 	$ansEntSubThree1 = filter_input(INPUT_POST, 'ansSubThree1');
 	$ansEntSubThree2 = filter_input(INPUT_POST, 'ansSubThree2');
 	$ansEntSubThree3 = filter_input(INPUT_POST, 'ansSubThree3');
 	$ansEntSubThree4 = filter_input(INPUT_POST, 'ansSubThree4');
 	
-	MultOne;
+	/*MultOne;*/
 	$ansMultOne1 = filter_input(INPUT_POST, 'ansMultOne1');
 	$ansMultOne2 = filter_input(INPUT_POST, 'ansMultOne2');
 	$ansMultOne3 = filter_input(INPUT_POST, 'ansMultOne3');
 	$ansMultOne4 = filter_input(INPUT_POST, 'ansMultOne4');
 	
-	MultTwo;
+	/*MultTwo;*/
 	$ansMultTwo1 = filter_input(INPUT_POST, 'ansMultTwo1');
 	$ansMultTwo2 = filter_input(INPUT_POST, 'ansMultTwo2');
 	$ansMultTwo3 = filter_input(INPUT_POST, 'ansMultTwo3');
 	$ansMultTwo4 = filter_input(INPUT_POST, 'ansMultTwo4');
 	
-	MultThree;
+	/*MultThree;*/
 	$ansMultThree1 = filter_input(INPUT_POST, 'ansMultThree1');
 	$ansMultThree2 = filter_input(INPUT_POST, 'ansMultThree2');
 	$ansMultThree3 = filter_input(INPUT_POST, 'ansMultThree3');
 	$ansMultThree4 = filter_input(INPUT_POST, 'ansMultThree4');
 	
-	DivOne;
+	/*DivOne;*/
 	$ansDivOne1 = filter_input(INPUT_POST, 'ansDivOne1');
 	$ansDivOne2 = filter_input(INPUT_POST, 'ansDivOne2');
 	$ansDivOne3 = filter_input(INPUT_POST, 'ansDivOne3');
 	$ansDivOne4 = filter_input(INPUT_POST, 'ansDivOne4');
 	
-	DivTwo;
+	/*DivTwo;*/
 	$ansDivTwo1 = filter_input(INPUT_POST, 'ansDivTwo1');
 	$ansDivTwo2 = filter_input(INPUT_POST, 'ansDivTwo2');
 	$ansDivTwo3 = filter_input(INPUT_POST, 'ansDivTwo3');
 	$ansDivTwo4 = filter_input(INPUT_POST, 'ansDivTwo4');
 	
-	DivThree;
+	/*DivThree;*/
 	$ansDivThree1 = filter_input(INPUT_POST, 'ansDivThree1');
 	$ansDivThree2 = filter_input(INPUT_POST, 'ansDivThree2');
 	$ansDivThree3 = filter_input(INPUT_POST, 'ansDivThree3');
 	$ansDivThree4 = filter_input(INPUT_POST, 'ansDivThree4');
         
-        Add
+        /*Add*/
 	(empty($ansEntAddOne1) ? $errorMessage['ansEntAddOne1'] = 'Please enter an answer' : 
 		($ansEntAddOne1 == $addOneQuestions["1+1"] ?  $addOneCount++ : $errorMessage['ansEntAddOne1'] = 'Incorrect'));
 	(empty($ansEntAddOne2) ? $errorMessage['ansEntAddOne2'] = 'Please enter an answer' : 
@@ -210,7 +210,7 @@ switch ($action) {
 	(empty($ansEntAddThree4) ? $errorMessage['ansEntAddThree4'] = 'Please enter an answer' :
 		($ansEntAddThree4 == $addThreeQuestions["999+752"] ?  $addThreeCount++ : $errorMessage['ansEntAddThree4'] = 'Incorrect'));
 			
-	Sub
+	/*Sub*/
 	(empty($ansEntSubOne1) ? $errorMessage['ansEntSubOne1'] = 'Please enter an answer' : 
 		($ansEntSubOne1 == $subOneQuestions["3-1"] ?  $subOneCount++ : $errorMessage['ansEntSubOne1'] = 'Incorrect'));
 	(empty($ansEntSubOne2) ? $errorMessage['ansEntSubOne2'] = 'Please enter an answer' : 
@@ -238,7 +238,7 @@ switch ($action) {
 	(empty($ansEntSubThree4) ? $errorMessage['ansEntSubThree4'] = 'Please enter an answer' :
 		($ansEntSubThree4 == $subThreeQuestions["999-588"] ?  $subThreeCount++ : $errorMessage['ansEntSubThree4'] = 'Incorrect'));
 	
-	Mult
+	/*Mult*/
 	(empty($ansMultOne1) ? $errorMessage['ansMultOne1'] = 'Please enter an answer' : 
 		($ansMultOne1 == $multOneQuestions["2x1"] ?  $multOneCount++ : $errorMessage['ansMultOne1'] = 'Incorrect'));
 	(empty($ansMultOne2) ? $errorMessage['ansMultOne2'] = 'Please enter an answer' : 
@@ -266,7 +266,7 @@ switch ($action) {
 	(empty($ansMultThree4) ? $errorMessage['ansMultThree4'] = 'Please enter an answer' :
 		($ansMultThree4 == $multThreeQuestions["955x666"] ?  $multThreeCount++ : $errorMessage['ansMultThree4'] = 'Incorrect'));
 		
-	Div
+	/*Div*/
 	(empty($ansDivOne1) ? $errorMessage['ansDivOne1'] = 'Please enter an answer' : 
 		($ansDivOne1 == $divOneQuestions["2/1"] ?  $divOneCount++ : $errorMessage['ansDivOne1'] = 'Incorrect'));
 	(empty($ansDivOne2) ? $errorMessage['ansDivOne2'] = 'Please enter an answer' : 
@@ -307,9 +307,19 @@ switch ($action) {
 	($divThreeCount >= 3 || $divTwoCount >= 3 ? $divLevel = 3 :
 		($divOneCount >= 3 ? $divLevel = 2 : $divLevel = 1));
         
+        $userID = student_db::update_student($userID, $fName, $lName, $addLevel, $subLevel, $multLevel, $divLevel, $teacherID);
         
         
         include('view/baseline.php');
+        die();
+        break;
+    
+    case 'results' :
+        $userID = $_SESSION['loggedInUser'];
+        $userID = student_db::get_student_by_id($userID);
+        
+        
+        include('view/results.php');
         die();
         break;
 }
