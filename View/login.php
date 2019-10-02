@@ -19,15 +19,12 @@
                 <option value="admin">Administrator</option>
             </select><br>
             <label>User ID: </label><input class="entry" type="text" name="userID"><br><br>
-            <label>Password: </label><input class="entry" type="text" name="password"><br><br>
+            <label>Password: </label><input class="entry" type="password" name="password"><br><br>
             <form action="index.php" method="POST">
                 <input type="hidden" value="loggedin" name="action">
                 <input type="submit" value="Login">
             </form>
             <p><?php echo $errors ; ?></p>
-
-
-            <br>
 
 
             </div>
