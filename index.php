@@ -36,7 +36,6 @@ switch ($action) {
         include('view/login.php');
         die();
         break;
-
     case 'loggedin':
         //this is for logged in. validations/checking and assigning sessions will go here.
         //setting variables for user/password
@@ -51,10 +50,6 @@ switch ($action) {
 
             //getting student ID from db
             $student = student_db::get_student_by_id($userID);
-
-//            echo var_dump($userType);
-//            echo var_dump($userID);
-//            echo var_dump($password);
 
             if ($password == null || $userID == null) {
                 $errors = "Cannot have missing inputs.";
@@ -75,8 +70,17 @@ switch ($action) {
             $teacher = teacher_db::get_teacher_by_id($userID);
             //setting session for user
             //$_SESSION['loggedInUser'] = $userID;
-
-            include('view/teacherProfile.php');
+            if ($password == null || $userID == null) {
+                $errors = "Cannot have missing inputs.";
+                include('view/login.php');
+            } else if ($password == $teacher->getPassword()) {
+                //setting session for user
+                $_SESSION['loggedInUser'] = $teacher;
+                include('view/teacherProfile.php');
+            } else {
+                $errors = "Incorrect login.";
+                include('view/login.php');
+            }
             die();
             break;
         } else {
