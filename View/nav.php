@@ -38,6 +38,12 @@
                 <input class="button" type="submit" value="Master Tests">
             </form>
             </td>
+            <td>
+                <form action="index.php" method="post">
+                <input type="hidden" value="baseline" name="action">
+                <input class="button" type="submit" value="Baseline Test">
+            </form>
+            </td>
           </tr>
         </table>
             
