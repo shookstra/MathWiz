@@ -1,23 +1,27 @@
 <?php include '/xampp/htdocs/mathwiz/view/header.php'; ?>
 
+
+
 <body>
     <div id="wrapper">
-        <?php
-        // put your code here
-        ?>
-       <div id="heading"> 
-           <h1>Math Drills Site</h1>
-            </div>
-            
-            <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
-            <br>
-            <h2>Profile</h2>
-            <div class="content">
-        <p>&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. 
-            Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
-        </p>
+        <div id="heading">
+            <h1>Math Drills Site</h1>
         </div>
 
-        
-        
-<?php include '/xampp/htdocs/mathwiz/view/footer.php'; ?>
+        <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
+        <h2>Profile</h2>
+        <div class="content">
+            <p>StudentID: <?php echo $_SESSION['loggedInUser']->getStudentID() ?></p>
+            <p>Password: <?php echo $_SESSION['loggedInUser']->getPassword() ?></p>
+            <p>First Name: <?php echo $_SESSION['loggedInUser']->getFName() ?></p>
+            <p>Last Name: <?php echo $_SESSION['loggedInUser']->getLName() ?></p>
+            <p>Addition Level: <?php echo $_SESSION['loggedInUser']->getAdditionLevel() ?></p>
+            <p>Subtraction Level: <?php echo $_SESSION['loggedInUser']->getSubtractionLevel() ?></p>
+            <p>Multiplication Level: <?php echo $_SESSION['loggedInUser']->getMultiplicationLevel() ?></p>
+            <p>Division Level: <?php echo $_SESSION['loggedInUser']->getDivisionLevel() ?></p>
+            <p>Teacher ID: <?php echo $_SESSION['loggedInUser']->getTeacherID() ?></p>
+        </div>
+
+        <?php include '/xampp/htdocs/mathwiz/view/footer.php'; ?>
+    </div>
+</body>
