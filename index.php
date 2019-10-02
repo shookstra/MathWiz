@@ -3,14 +3,16 @@
 //NOTES TO GO OVER:    
 //header.php, footer.php and nav.php do not work with the pages in the view folder, only on the index page
 //Need to set a standard of vsriable names to make things easier for all of us
-
-session_start();
 require_once 'model/student_db.php';
 require_once 'model/teacher_db.php';
 require_once 'model/admin_db.php';
 require_once 'model/student.php';
 require_once 'model/teacher.php';
 require_once 'model/admin.php';
+
+
+session_start();
+
 
 //variables
 $errors = '';
@@ -46,17 +48,22 @@ switch ($action) {
         $userID = filter_input(INPUT_POST, 'userID');
         $password = filter_input(INPUT_POST, 'password');
 
-      
-
         //getting user type from form for what kind of user is logging in
         if ($userType == 'student') {
 
             //getting student ID from db
             $student = student_db::get_student_by_id($userID);
 
-            if ($password == $student->getPassword()) {
+//            echo var_dump($userType);
+//            echo var_dump($userID);
+//            echo var_dump($password);
+            
+            if ($password == null || $userID == null){
+                $errors = "Cannot have missing inputs.";
+                include('view/login.php');
+            } else if ($password == $student->getPassword()) {
                 //setting session for user
-                $_SESSION['loggedInUser'] = $userID;
+                $_SESSION['loggedInUser'] = $student;
                 include('view/studentProfile.php');                
             } else {
                 $errors = "Incorrect login.";
@@ -69,7 +76,7 @@ switch ($action) {
             //getting teacher ID from db
             $teacher = teacher_db::get_teacher_by_id($userID);
             //setting session for user
-            $_SESSION['loggedInUser'] = $userID;
+            //$_SESSION['loggedInUser'] = $userID;
 
             include('view/teacherProfile.php');
             die();
@@ -78,7 +85,7 @@ switch ($action) {
             //getting admin ID from db
             $admin = admin_db::get_admin_by_id($userID);
             //setting session for user
-            $_SESSION['loggedInUser'] = $userID;
+            //$_SESSION['loggedInUser'] = $userID;
 
             include('view/adminProfile.php');
             die();
