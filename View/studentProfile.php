@@ -7,7 +7,6 @@
         <div id="heading">
             <h1>Math Drills Site</h1>
         </div>
-
         <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
         <h2>Profile</h2>
         <div class="content">
