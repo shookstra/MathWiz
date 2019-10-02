@@ -99,18 +99,12 @@
 ?>
 
 <?php include '/xampp/htdocs/mathwiz/view/header.php'; ?>
-
-    <body>
+    
+<main>
         <div id="wrapper">
-        <?php
-        // put your code here
-        ?>
-       <div id="heading"> 
-           <h1>Math Drill Site</h1>
-       </div>
-             
+
             <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
-    <body>
+
        <div class="content"> 
                  <h2>Baseline Test</h2>
         <p>&nbsp;&nbsp;&nbsp; You will have 48 questions to answer. They will go over addition, subtraction, multiplication and division. How you do on this test will set what types of drills and tests you will have in the future.</p>
@@ -369,6 +363,6 @@
                         </tr>
                     <?php endforeach; ?>
         </div>
-        
+</main>    
         
 <?php include '/xampp/htdocs/mathwiz/view/footer.php'; ?>
