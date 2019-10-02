@@ -312,5 +312,10 @@ switch ($action) {
         include('view/baseline.php');
         die();
         break;
+    
+      case 'home':
+        include('view/changePass.php');
+        die();
+        break;
 }
 ?>

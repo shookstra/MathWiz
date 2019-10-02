@@ -2,12 +2,17 @@
 
 
     <body>
-       <main>
-
+        <div id="wrapper">
+            
+            <div id="heading"> 
+           <h1>Math Drills Site</h1>
+            </div>
+             <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
+            <br>
                 <h2>Welcome, <?php echo $admin->getFName(); ?></h2>
                 
-                <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
-                
+               
+                <div class="content">
                 <table>
                     <tr>
                         <th>Teacher First Name</th>
@@ -39,8 +44,12 @@
                     <?php endforeach; ?> 
 
                 </table><br>
+                <form action="index.php" method="POST">
+                <input type="hidden" value="changePass" name="action">
+                <input type="submit" value="Change Password">
+            </form>
 
-            </main>
+                </div>
   
         
         
