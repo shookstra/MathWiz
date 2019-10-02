@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2019 at 08:54 PM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Oct 02, 2019 at 09:36 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `password` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adminID`, `fName`, `lName`, `password`) VALUES
+(1, 'bobby', 'henry', 'password');
+
 -- --------------------------------------------------------
 
 --
@@ -46,10 +53,10 @@ CREATE TABLE `student` (
   `fName` varchar(50) NOT NULL,
   `lName` varchar(50) NOT NULL,
   `password` varchar(150) NOT NULL,
-  `additionLevel` int(1) NOT NULL DEFAULT 1,
-  `subractionLevel` int(1) NOT NULL DEFAULT 1,
-  `multiplicationLevel` int(1) NOT NULL DEFAULT 1,
-  `divisionLevel` int(1) NOT NULL DEFAULT 1,
+  `additionLevel` int(1) NOT NULL DEFAULT '1',
+  `subractionLevel` int(1) NOT NULL DEFAULT '1',
+  `multiplicationLevel` int(1) NOT NULL DEFAULT '1',
+  `divisionLevel` int(1) NOT NULL DEFAULT '1',
   `teacherID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -90,8 +97,8 @@ CREATE TABLE `testscores` (
 --
 
 CREATE TABLE `testsettings` (
-  `numberOfQuestions` int(11) NOT NULL DEFAULT 20,
-  `requiredNumQuestionsRight` int(11) NOT NULL DEFAULT 18
+  `numberOfQuestions` int(11) NOT NULL DEFAULT '20',
+  `requiredNumQuestionsRight` int(11) NOT NULL DEFAULT '18'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -108,7 +115,8 @@ ALTER TABLE `admin`
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
-  ADD PRIMARY KEY (`studentID`);
+  ADD PRIMARY KEY (`studentID`),
+  ADD KEY `FK_StudentTbl_teacher` (`teacherID`);
 
 --
 -- Indexes for table `teacher`
@@ -120,7 +128,8 @@ ALTER TABLE `teacher`
 -- Indexes for table `testscores`
 --
 ALTER TABLE `testscores`
-  ADD PRIMARY KEY (`testID`);
+  ADD PRIMARY KEY (`testID`),
+  ADD KEY `fk_testscoreTBL_student` (`studentID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -130,13 +139,13 @@ ALTER TABLE `testscores`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123456790;
 
 --
 -- AUTO_INCREMENT for table `teacher`
@@ -149,6 +158,22 @@ ALTER TABLE `teacher`
 --
 ALTER TABLE `testscores`
   MODIFY `testID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `student`
+--
+ALTER TABLE `student`
+  ADD CONSTRAINT `FK_StudentTbl_teacher` FOREIGN KEY (`teacherID`) REFERENCES `teacher` (`teacherID`);
+
+--
+-- Constraints for table `testscores`
+--
+ALTER TABLE `testscores`
+  ADD CONSTRAINT `fk_testscoreTBL_student` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
