@@ -51,6 +51,8 @@ class loginValidation {
         $data = htmlspecialchars($data);
         return $data;
     }
+    
+
 
 
 }

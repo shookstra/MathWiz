@@ -2,20 +2,25 @@
 
     <body>
         <div id="wrapper">
-        <?php
-        // put your code here
-        ?>
-       <div id="heading"> 
-           <h1>Math Drill Site</h1>
-       </div>
+
              
             <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
            
             <div class="content"> 
-                 <h2>Lets Get Drilled!</h2>
-        <p>&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. 
-            Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
-        
+                 <h2><?php echo $_SESSION['loggedInUser']->getFName(); ?>, you ready to Drill?</h2>
+        <p><?php echo $_SESSION['loggedInUser']->getFName(); ?>, choose what type of Math you would like to drill on.</p>
+		
+		<form action="index.php" method="POST">
+            <input type="hidden" name="action" value="doDrills">
+            <select name='type'>
+                <option value="addition" selected>Addition</option>
+                <option value="subtraction">Subtraction</option>
+                <option value="multiplication">Multiplication</option>
+				<option value="division">Division</option>
+            </select><br>
+			<input type="hidden" value="doDrills" name="action">
+            <input type="submit" value="Begin Drills">
+        </form>
         
         
         

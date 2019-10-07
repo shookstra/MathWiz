@@ -2,9 +2,9 @@
 
 
     <body>
-        <p><?php if($ansEntAddOne1 === $addOneQuestions["1+1"]){?> <p>hi</p> <?php }else{ ?> <p>nope</p> <?php } ?></p>
+       
             <div id="wrapper">
-                <h2>Congratulations, <?php echo $_SESSION['loggedInUser']->getFName(); ?></h2>
+                <h2>Congratulations, <?php echo $student->getFName(); ?></h2>
                 
                 <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
                 
@@ -22,13 +22,13 @@
                     
                         <tr>
 
-                        <td><?php echo $_SESSION['loggedInUser']->getFName(); ?></td>
-                        <td><?php echo $_SESSION['loggedInUser']->getLName(); ?></td>
-                        <td><?php echo $_SESSION['loggedInUser']->getStudentID(); ?></td>
-                        <td><?php echo $_SESSION['loggedInUser']->getAdditionLevel(); ?></td>
-                        <td><?php echo $_SESSION['loggedInUser']->getSubtractionLevel(); ?></td>
-                        <td><?php echo $_SESSION['loggedInUser']->getMultiplicationLevel(); ?></td>
-                        <td><?php echo $_SESSION['loggedInUser']->getDivisionLevel(); ?></td>
+                        <td><?php echo $student->getFName(); ?></td>
+                        <td><?php echo $student->getLName(); ?></td>
+                        <td><?php echo $student->getStudentID(); ?></td>
+                        <td><?php echo $student->getAdditionLevel(); ?></td>
+                        <td><?php echo $student->getSubtractionLevel(); ?></td>
+                        <td><?php echo $student->getMultiplicationLevel(); ?></td>
+                        <td><?php echo $student->getDivisionLevel(); ?></td>
                         </tr>
 
 
