@@ -47,8 +47,11 @@
                 <form action="index.php" method="POST">
                 <input type="hidden" value="changePass" name="action">
                 <input type="submit" value="Change Password">
-            </form>
-
+                </form>
+               <form action="index.php" method="POST">
+                <input type="hidden" value="newUser" name="action">
+                <input type="submit" value="New User">
+                </form>
                 </div>
   
         

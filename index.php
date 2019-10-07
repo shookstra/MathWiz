@@ -813,8 +813,22 @@ switch ($action) {
         session_destroy();
         header("Refresh:0");
         include("view/home.php");
+        die();
+        break;
     case 'changePass':
         include('view/changePass.php');
+        die();
+        break;
+    case 'actualPassChange':
+        include('view/passwordChanged.php');
+        die();
+        break;
+    case 'newUser':
+        include('view/newUser.php');
+        die();
+        break;
+    case 'createUser':
+        include('view/userCreated.php');
         die();
         break;
 }
