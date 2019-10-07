@@ -115,8 +115,8 @@ switch ($action) {
         }
 
     case 'drills' :
-	$student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
-	
+        $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
+
         include('view/drillPage.php');
         die();
         break;
@@ -124,10 +124,8 @@ switch ($action) {
     case 'doDrills':
             
         $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
-        die();
-        break;
-            
-	$type = filter_input(INPUT_POST, 'type');
+        
+        $type = filter_input(INPUT_POST, 'type');
         $_SESSION['type'] = $type;
         
 	if($type == "addition") {
@@ -180,17 +178,71 @@ switch ($action) {
 		$max = 999;
 	}
 	}	
-		
-		
-	include('view/drills.php');
         include('view/drillsResults.php');
         die();
         break;
 
     case 'tests' :
+        
         include('view/tests.php');
         die();
         break;
+            
+    case 'takeTests':
+        $type = filter_input(INPUT_POST, 'type');
+        $_SESSION['type'] = $type;
+        
+	if($type == "addition") {
+	$level = $student->getAdditionLevel();
+	if($level == 1){
+		$min = 0;
+		$max = 9;
+	} else if ($level == 2){
+		$min = 10;
+		$max = 99;
+	} else {
+		$min = 100;
+		$max = 999;
+	}
+	} else if ($type == "subtraction") {
+	$level = $student->getSubtractionLevel();
+        
+	if($level == 1){
+		$min = 0;
+		$max = 9;
+	} else if ($level == 2){
+		$min = 10;
+		$max = 99;
+	} else {
+		$min = 100;
+		$max = 999;
+	}
+	} else if ($type == "multiplication") {
+	$level = $student->getMultiplicationLevel();
+	if($level == 1){
+		$min = 0;
+		$max = 9;
+	} else if ($level == 2){
+		$min = 10;
+		$max = 99;
+	} else {
+		$min = 100;
+		$max = 999;
+	}
+	} else {
+	$level = $student->getDivisionLevel();
+	if($level == 1){
+		$min = 0;
+		$max = 9;
+	} else if ($level == 2){
+		$min = 10;
+		$max = 99;
+	} else {
+		$min = 100;
+		$max = 999;
+	}
+	}
+	
         include('view/takeTest.php');
         die();
         break;

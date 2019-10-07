@@ -1,47 +1,7 @@
-<?php 
-    
+<?php include '/xampp/htdocs/mathwiz/view/header.php'; ?>
 
-    if($type == 'addition'){
-	for($i = 0; $i < 10; $i++){
-		$first = mt_rand($min, $max);
-		$second = mt_rand($min, $max);
-		$questions[$first."+".$second] = $first+$second;
-                $answerSheet[$i];
-                $q = $questions[$first."+".$second];
-                    if(array_key_exists($q, $questions)){
-		$i--;}
-        }
-    } else if($type == 'subtraction'){
 
-	for($i = 0; $i < 10; $i++){
-		$first = mt_rand($min, $max);
-		$second = mt_rand($min, $max);
-		if($first > $second){
-			$questions[$first."-".$second] = $first-$second;
-                        $answerSheet[$i];
-                        $q = $questions[$first."-".$second];
-			if(array_key_exists($q, $questions)){
-			$i--;}
-		} else {
-			$questions[$second."-".$first] = $second-$first;
-                        $answerSheet[$i];
-                        $q = $questions[$first."-".$second];
-			if(array_key_exists($q, $questions)){
-			$i--;}
-		}
-        }
-    }else if($type == 'multiplication'){
-	
-	for($i = 0; $i < 10; $i++){
-		$first = mt_rand($min, $max);
-		$second = mt_rand($min, $max);
-		$questions[$first."*".$second] = $first*$second;
-                $answerSheet[$i];
-                $q = $questions[$first."*".$second];
-		if(array_key_exists($q, $questions)){
-		$i--;}
-        }
-    } else {
+<div id="wrapper">
 
 	for($i = 0; $i < 10; $i++){
 		$first = mt_rand($min, $max);

@@ -2,6 +2,7 @@
     $answerSheet = 'answerSheet00';
 
 
+
     if($type == 'addition'){
 	for($i = 1; $i <= 10; $i++){
 		$first = mt_rand($min, $max);
@@ -12,7 +13,7 @@
                     if(array_key_exists($q, $questions)){
 		$i--;}
         }
-    } else if($type == 'subtraction'){
+        } else if($type == 'subtraction'){
 
 	for($i = 0; $i < 10; $i++){
 		$first = mt_rand($min, $max);
@@ -61,7 +62,29 @@
         $a = 'answer00';
         
         ?>
+<?php include '/xampp/htdocs/mathwiz/view/header.php'; ?>
 
+
+<div id="wrapper">
+
+    <?php include '/xampp/htdocs/mathwiz/view/headerElement.php'; ?>
+    <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
+    
+     <div class="content">
+        <h2>Level Test</h2>
+        <p><?php echo $student->getFName(); ?>, you ready to drill? Take your time and read each question carefully.</p>
+
+
+        <table>
+            <tr>
+                <th>Level Test</th>
+                <th>&nbsp;</th>
+                <th>Questions</th>
+                <th>&nbsp;</th>
+                <th>Answer</th>
+
+            </tr>
+            <?php foreach ($questions as $key => $value) : ?>
                     <tr>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
@@ -80,6 +103,5 @@
             </form>
 
         </div>
-</body>
 
-<?php include '/xampp/htdocs/mathwiz/view/footer.php'; ?>
+ <?php include '/xampp/htdocs/mathwiz/view/footer.php'; ?>
