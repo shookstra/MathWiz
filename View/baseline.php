@@ -110,7 +110,7 @@
         <p>&nbsp;&nbsp;&nbsp; You will have 48 questions to answer. They will go over addition, subtraction, multiplication and division. How you do on this test will set what types of drills and tests you will have in the future.</p>
         
         
-        <table>
+        <table><form action="index.php" method="post">
                     <tr>
                         <th>Addition Level 1</th>
                         <th>&nbsp;</th>
@@ -126,9 +126,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$a; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?> 
                         
@@ -147,9 +147,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td><
                             <input type="text" name="<?php echo ++$b; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?> 
                     
@@ -168,9 +168,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$c; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?> 
         
@@ -189,9 +189,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$d; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                         
@@ -210,9 +210,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$e; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                         
@@ -231,9 +231,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$f; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                         
@@ -252,9 +252,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$g; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                         
@@ -273,9 +273,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$h; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                         
@@ -294,9 +294,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$i; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                         
@@ -315,9 +315,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$j; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                         
@@ -336,9 +336,9 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$k; ?>">
-                            </form></td>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                         
@@ -357,16 +357,17 @@
                         <td>&nbsp;</td>
                         <td><?php echo $key; ?></td>
                         <td>&nbsp;</td>
-                        <td><form action="index.php" method="post">
+                        <td>
                             <input type="text" name="<?php echo ++$l; ?>">
                             </form></td>
                         </tr>
                     <?php endforeach; ?>
                         
-                    <form action="index.php" method="post">
+                         <form action="index.php" method="post">
                         <input type="hidden" name="action" value="commitResults">
                         <input type="submit" value="Submit Answers">
                     </form>
+        </table>
         </div>
   
         

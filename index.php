@@ -123,9 +123,93 @@ switch ($action) {
 	$divOneCount = 0;
 	$divTwoCount = 0;
 	$divThreeCount = 0;
+        
+        $addOneQuestions = [
+		"1+1" => 2,
+		"3+2" => 5,
+		"5+1" => 6,
+		"7+2" => 9,
+		];
+	
+	$addTwoQuestions = [
+		"10+10" => 20,
+		"32+29" => 61,
+		"74+41" => 115,
+		"95+58" => 153,
+		];
+		
+	$addThreeQuestions = [
+		"101+229" => 330,
+		"388+441" => 829,
+		"774+390" => 1164,
+		"999+752" => 1751,
+		];
+		
+	$subOneQuestions = [
+		"3-1" => 2,
+		"5-2" => 3,
+		"7-1" => 6,
+		"9-0" => 9,
+		];
+	
+	$subTwoQuestions = [
+		"28-12" => 16,
+		"75-25" => 50,
+		"99-14" => 85,
+		"72-58" => 14,
+		];
+		
+	$subThreeQuestions = [
+		"333-102" => 231,
+		"582-385" => 197,
+		"745-215" => 530,
+		"999-588" => 411,
+		];
+		
+	$multOneQuestions = [
+		"2x1" => 2,
+		"3x3" => 9,
+		"7x6" => 42,
+		"9x8" => 72,
+		];
+	
+	$multTwoQuestions = [
+		"11x13" => 143,
+		"32x42" => 1344,
+		"55x18" => 990,
+		"97x68" => 6596,
+		];
+		
+	$multThreeQuestions = [
+		"105x118" => 12390,
+		"395x222" => 87690,
+		"632x539" => 340648,
+		"955x666" => 636030,
+		];
+		
+	$divOneQuestions = [
+		"2/1" => 2,
+		"4/2" => 2,
+		"9/3" => 3,
+		"8/2" => 4,
+		];
+		
+	$divTwoQuestions = [
+		"44/11" => 4,
+		"99/33" => 3,
+		"84/21" => 4,
+		"96/32" => 3,
+		];
+	
+	$divThreeQuestions = [
+		"496/8" => 62,
+		"306/6" => 51,
+		"279/9" => 31,
+		"612/6" => 102,
+		];
 	
 	/*AddOne*/
-	$ansEntAddOne1 = filter_input(INPUT_POST, 'ansAddOne1');
+        $ansEntAddOne1 = filter_input(INPUT_POST, 'ansAddOne1');
 	$ansEntAddOne2 = filter_input(INPUT_POST, 'ansAddOne2');
 	$ansEntAddOne3 = filter_input(INPUT_POST, 'ansAddOne3');
 	$ansEntAddOne4 = filter_input(INPUT_POST, 'ansAddOne4');
@@ -196,131 +280,266 @@ switch ($action) {
 	$ansDivThree3 = filter_input(INPUT_POST, 'ansDivThree3');
 	$ansDivThree4 = filter_input(INPUT_POST, 'ansDivThree4');
         
-        /*Add*/
-	(empty($ansEntAddOne1) ? $errorMessage['ansEntAddOne1'] = 'Please enter an answer' : 
-		($ansEntAddOne1 == $addOneQuestions["1+1"] ?  $addOneCount++ : $errorMessage['ansEntAddOne1'] = 'Incorrect'));
-	(empty($ansEntAddOne2) ? $errorMessage['ansEntAddOne2'] = 'Please enter an answer' : 
-		($ansEntAddOne2 == $addOneQuestions["3+2"] ?  $addOneCount++ : $errorMessage['ansEntAddOne2'] = 'Incorrect'));
-	(empty($ansEntAddOne3) ? $errorMessage['ansEntAddOne3'] = 'Please enter an answer' :
-		($ansEntAddOne3 == $addOneQuestions["5+1"] ?  $addOneCount++ : $errorMessage['ansEntAddOne3'] = 'Incorrect'));
-	(empty($ansEntAddOne4) ? $errorMessage['ansEntAddOne4'] = 'Please enter an answer' :
-		($ansEntAddOne4 == $addOneQuestions["7+2"] ?  $addOneCount++ : $errorMessage['ansEntAddOne4'] = 'Incorrect'));
-		
-	(empty($ansEntAddTwo1) ? $errorMessage['ansEntAddTwo1'] = 'Please enter an answer' : 
-		($ansEntAddTwo1 == $addTwoQuestions["10+10"] ?  $addTwoCount++ : $errorMessage['ansEntAddTwo1'] = 'Incorrect'));
-	(empty($ansEntAddTwo2) ? $errorMessage['ansEntAddTwo2'] = 'Please enter an answer' : 
-		($ansEntAddTwo2 == $addTwoQuestions["32+29"] ?  $addTwoCount++ : $errorMessage['ansEntAddTwo2'] = 'Incorrect'));
-	(empty($ansEntAddTwo3) ? $errorMessage['ansEntAddTwo3'] = 'Please enter an answer' :
-		($ansEntAddTwo3 == $addTwoQuestions["74+41"] ?  $addTwoCount++ : $errorMessage['ansEntAddTwo3'] = 'Incorrect'));
-	(empty($ansEntAddTwo4) ? $errorMessage['ansEntAddTwo4'] = 'Please enter an answer' :
-		($ansEntAddTwo4 == $addTwoQuestions["95+58"] ?  $addTwoCount++ : $errorMessage['ansEntAddTwo4'] = 'Incorrect'));
-		
-	(empty($ansEntAddThree1) ? $errorMessage['ansEntAddThree1'] = 'Please enter an answer' : 
-		($ansEntAddThree1 == $addThreeQuestions["101+229"] ?  $addThreeCount++ : $errorMessage['ansEntAddThree1'] = 'Incorrect'));
-	(empty($ansEntAddThree2) ? $errorMessage['ansEntAddThree2'] = 'Please enter an answer' : 
-		($ansEntAddThree2 == $addThreeQuestions["388+441"] ?  $addThreeCount++ : $errorMessage['ansEntAddThree2'] = 'Incorrect'));
-	(empty($ansEntAddThree3) ? $errorMessage['ansEntAddThree3'] = 'Please enter an answer' :
-		($ansEntAddThree3 == $addThreeQuestions["774+390"] ?  $addThreeCount++ : $errorMessage['ansEntAddThree3'] = 'Incorrect'));
-	(empty($ansEntAddThree4) ? $errorMessage['ansEntAddThree4'] = 'Please enter an answer' :
-		($ansEntAddThree4 == $addThreeQuestions["999+752"] ?  $addThreeCount++ : $errorMessage['ansEntAddThree4'] = 'Incorrect'));
-			
-	/*Sub*/
-	(empty($ansEntSubOne1) ? $errorMessage['ansEntSubOne1'] = 'Please enter an answer' : 
-		($ansEntSubOne1 == $subOneQuestions["3-1"] ?  $subOneCount++ : $errorMessage['ansEntSubOne1'] = 'Incorrect'));
-	(empty($ansEntSubOne2) ? $errorMessage['ansEntSubOne2'] = 'Please enter an answer' : 
-		($ansEntSubOne2 == $subOneQuestions["5-2"] ?  $subOneCount++ : $errorMessage['ansEntSubOne2'] = 'Incorrect'));
-	(empty($ansEntSubOne3) ? $errorMessage['ansEntSubOne3'] = 'Please enter an answer' :
-		($ansEntSubOne3 == $subOneQuestions["7-1"] ?  $subOneCount++ : $errorMessage['ansEntSubOne3'] = 'Incorrect'));
-	(empty($ansEntSubOne4) ? $errorMessage['ansEntSubOne4'] = 'Please enter an answer' :
-		($ansEntSubOne4 == $subOneQuestions["9-0"] ?  $subOneCount++ : $errorMessage['ansEntSubOne4'] = 'Incorrect'));
-	
-	(empty($ansEntSubTwo1) ? $errorMessage['ansEntSubTwo1'] = 'Please enter an answer' : 
-		($ansEntSubTwo1 == $subTwoQuestions["28-12"] ?  $subTwoCount++ : $errorMessage['ansEntSubTwo1'] = 'Incorrect'));
-	(empty($ansEntSubTwo2) ? $errorMessage['ansEntSubTwo2'] = 'Please enter an answer' : 
-		($ansEntSubTwo2 == $subTwoQuestions["75-25"] ?  $subTwoCount++ : $errorMessage['ansEntSubTwo2'] = 'Incorrect'));
-	(empty($ansEntSubTwo3) ? $errorMessage['ansEntSubTwo3'] = 'Please enter an answer' :
-		($ansEntSubTwo3 == $subTwoQuestions["99-14"] ?  $subTwoCount++ : $errorMessage['ansEntSubTwo3'] = 'Incorrect'));
-	(empty($ansEntSubTwo4) ? $errorMessage['ansEntSubTwo4'] = 'Please enter an answer' :
-		($ansEntSubTwo4 == $subTwoQuestions["72-58"] ?  $subTwoCount++ : $errorMessage['ansEntSubTwo4'] = 'Incorrect'));
+       if($ansEntAddOne1 == $addOneQuestions["1+1"]) {
+	$addOneCount++;
+        }
 
+        if($ansEntAddOne2 == $addOneQuestions["3+2"]) {
+	$addOneCount++;
+        }
 
-	(empty($ansEntSubThree1) ? $errorMessage['ansEntSubThree1'] = 'Please enter an answer' : 
-		($ansEntSubThree1 == $subThreeQuestions["333-102"] ?  $subThreeCount++ : $errorMessage['ansEntSubThree1'] = 'Incorrect'));
-	(empty($ansEntSubThree2) ? $errorMessage['ansEntSubThree2'] = 'Please enter an answer' : 
-		($ansEntSubThree2 == $subThreeQuestions["582-385"] ?  $subThreeCount++ : $errorMessage['ansEntSubThree2'] = 'Incorrect'));
-	(empty($ansEntSubThree3) ? $errorMessage['ansEntSubThree3'] = 'Please enter an answer' :
-		($ansEntSubThree3 == $subThreeQuestions["745-215"] ?  $subThreeCount++ : $errorMessage['ansEntSubThree3'] = 'Incorrect'));
-	(empty($ansEntSubThree4) ? $errorMessage['ansEntSubThree4'] = 'Please enter an answer' :
-		($ansEntSubThree4 == $subThreeQuestions["999-588"] ?  $subThreeCount++ : $errorMessage['ansEntSubThree4'] = 'Incorrect'));
+        if($ansEntAddOne3 == $addOneQuestions["5+1"]) {
+	$addOneCount++;
+        }
+
+        if($ansEntAddOne4 == $addOneQuestions["7+2"]) {
+	$addOneCount++;
+        }
+
+        /*---------------------------------------------*/
+
+        if($ansEntAddTwo1 == $addTwoQuestions["10+10"]) {
+	$addTwoCount++;
+        }
+
+        if($ansEntAddTwo2 == $addTwoQuestions["32+29"]) {
+	$addTwoCount++;
+        }
+
+        if($ansEntAddTwo3 == $addTwoQuestions["74+41"]) {
+	$addTwoCount++;
+        }
+
+        if($ansEntAddTwo4 == $addTwoQuestions["95+58"]) {
+	$addTwoCount++;
+        }
+
+        /*---------------------------------------------*/
+
+        if($ansEntAddThree1 == $addThreeQuestions["101+229"]) {
+	$addThreeCount++;
+        }
+
+        if($ansEntAddThree2 == $addThreeQuestions["388+441"]) {
+	$addThreeCount++;
+        }
+
+        if($ansEntAddThree3 == $addThreeQuestions["774+390"]) {
+	$addThreeCount++;
+        }
+
+        if($ansEntAddThree4 == $addThreeQuestions["999+752"]) {
+	$addThreeCount++;
+        }		
 	
-	/*Mult*/
-	(empty($ansMultOne1) ? $errorMessage['ansMultOne1'] = 'Please enter an answer' : 
-		($ansMultOne1 == $multOneQuestions["2x1"] ?  $multOneCount++ : $errorMessage['ansMultOne1'] = 'Incorrect'));
-	(empty($ansMultOne2) ? $errorMessage['ansMultOne2'] = 'Please enter an answer' : 
-		($ansMultOne2 == $multOneQuestions["3x3"] ?  $multOneCount++ : $errorMessage['ansMultOne2'] = 'Incorrect'));
-	(empty($ansMultOne3) ? $errorMessage['ansMultOne3'] = 'Please enter an answer' :
-		($ansMultOne3 == $multOneQuestions["7x6"] ?  $multOneCount++ : $errorMessage['ansMultOne3'] = 'Incorrect'));
-	(empty($ansMultOne4) ? $errorMessage['ansMultOne4'] = 'Please enter an answer' :
-		($ansMultOne4 == $multOneQuestions["9x8"] ?  $multOneCount++ : $errorMessage['ansMultOne4'] = 'Incorrect'));		
+        /*---------------------------------------------*/
+
+        /*Sub*/
+        if($ansEntSubOne1 == $subOneQuestions["3-1"]) {
+	$subOneCount++;
+        }
+
+        if($ansEntSubOne2 == $subOneQuestions["5-2"]) {
+	$subOneCount++;
+        }
+
+        if($ansEntSubOne3 == $subOneQuestions["7-1"]) {
+	$subOneCount++;
+        }
+
+        if($ansEntSubOne4 == $subOneQuestions["9-0"]) {
+	$subOneCount++;
+        }			
 	
-	(empty($ansMultTwo1) ? $errorMessage['ansMultTwo1'] = 'Please enter an answer' : 
-		($ansMultTwo1 == $multTwoQuestions["11x13"] ?  $multTwoCount++ : $errorMessage['ansMultTwo1'] = 'Incorrect'));
-	(empty($ansMultTwo2) ? $errorMessage['ansMultTwo2'] = 'Please enter an answer' : 
-		($ansMultTwo2 == $multTwoQuestions["32x42"] ?  $multTwoCount++ : $errorMessage['ansMultTwo2'] = 'Incorrect'));
-	(empty($ansMultTwo3) ? $errorMessage['ansMultTwo3'] = 'Please enter an answer' :
-		($ansMultTwo3 == $multTwoQuestions["55x18"] ?  $multTwoCount++ : $errorMessage['ansMultTwo3'] = 'Incorrect'));
-	(empty($ansMultTwo4) ? $errorMessage['ansMultTwo4'] = 'Please enter an answer' :
-		($ansMultTwo4 == $multTwoQuestions["97x68"] ?  $multTwoCount++ : $errorMessage['ansMultTwo4'] = 'Incorrect'));
-		
-	(empty($ansMultThree1) ? $errorMessage['ansMultThree1'] = 'Please enter an answer' : 
-		($ansMultThree1 == $multThreeQuestions["105x118"] ?  $multThreeCount++ : $errorMessage['ansMultThree1'] = 'Incorrect'));
-	(empty($ansMultThree2) ? $errorMessage['ansMultThree2'] = 'Please enter an answer' : 
-		($ansMultThree2 == $multThreeQuestions["395x222"] ?  $multThreeCount++ : $errorMessage['ansMultThree2'] = 'Incorrect'));
-	(empty($ansMultThree3) ? $errorMessage['ansMultThree3'] = 'Please enter an answer' :
-		($ansMultThree3 == $multThreeQuestions["632x539"] ?  $multThreeCount++ : $errorMessage['ansMultThree3'] = 'Incorrect'));
-	(empty($ansMultThree4) ? $errorMessage['ansMultThree4'] = 'Please enter an answer' :
-		($ansMultThree4 == $multThreeQuestions["955x666"] ?  $multThreeCount++ : $errorMessage['ansMultThree4'] = 'Incorrect'));
-		
-	/*Div*/
-	(empty($ansDivOne1) ? $errorMessage['ansDivOne1'] = 'Please enter an answer' : 
-		($ansDivOne1 == $divOneQuestions["2/1"] ?  $divOneCount++ : $errorMessage['ansDivOne1'] = 'Incorrect'));
-	(empty($ansDivOne2) ? $errorMessage['ansDivOne2'] = 'Please enter an answer' : 
-		($ansDivOne2 == $divOneQuestions["4/2"] ?  $divOneCount++ : $errorMessage['ansDivOne2'] = 'Incorrect'));
-	(empty($ansDivOne3) ? $errorMessage['ansDivOne3'] = 'Please enter an answer' :
-		($ansDivOne3 == $divOneQuestions["9/3"] ?  $divOneCount++ : $errorMessage['ansDivOne3'] = 'Incorrect'));
-	(empty($ansDivOne4) ? $errorMessage['ansDivOne4'] = 'Please enter an answer' :
-		($ansDivOne4 == $divOneQuestions["8/2"] ?  $divOneCount++ : $errorMessage['ansDivOne4'] = 'Incorrect'));
-	
-	(empty($ansDivTwo1) ? $errorMessage['ansDivTwo1'] = 'Please enter an answer' : 
-		($ansDivTwo1 == $divTwoQuestions["44/11"] ?  $divTwoCount++ : $errorMessage['ansDivTwo1'] = 'Incorrect'));
-	(empty($ansDivTwo2) ? $errorMessage['ansDivTwo2'] = 'Please enter an answer' : 
-		($ansDivTwo2 == $divTwoQuestions["99/33"] ?  $divTwoCount++ : $errorMessage['ansDivTwo2'] = 'Incorrect'));
-	(empty($ansDivTwo3) ? $errorMessage['ansDivTwo3'] = 'Please enter an answer' :
-		($ansDivTwo3 == $divTwoQuestions["84/21"] ?  $divTwoCount++ : $errorMessage['ansDivTwo3'] = 'Incorrect'));
-	(empty($ansDivTwo4) ? $errorMessage['ansDivTwo4'] = 'Please enter an answer' :
-		($ansDivTwo4 == $divTwoQuestions["96/32"] ?  $divTwoCount++ : $errorMessage['ansDivTwo4'] = 'Incorrect'));
-		
-	(empty($ansDivThree1) ? $errorMessage['ansDivThree1'] = 'Please enter an answer' : 
-		($ansDivThree1 == $divThreeQuestions["496/8"] ?  $divThreeCount++ : $errorMessage['ansDivThree1'] = 'Incorrect'));
-	(empty($ansDivThree2) ? $errorMessage['ansDivThree2'] = 'Please enter an answer' : 
-		($ansDivThree2 == $divThreeQuestions["306/6"] ?  $divThreeCount++ : $errorMessage['ansDivThree2'] = 'Incorrect'));
-	(empty($ansDivThree3) ? $errorMessage['ansDivThree3'] = 'Please enter an answer' :
-		($ansDivThree3 == $divThreeQuestions["279/9"] ?  $divThreeCount++ : $errorMessage['ansDivThree3'] = 'Incorrect'));
-	(empty($ansDivThree4) ? $errorMessage['ansDivThree4'] = 'Please enter an answer' :
-		($ansDivThree4 == $divThreeQuestions["612/6"] ?  $divThreeCount++ : $errorMessage['ansDivThree4'] = 'Incorrect'));
-		
-	
-	($addThreeCount >= 3 || $addTwoCount >= 3 ? $addLevel = 3 : 
-		($addOneCount >= 3 ? $addLevel = 2 : $addLevel = 1));
 			
-	($subThreeCount >= 3 || $subTwoCount >= 3 ? $subLevel = 3 :
-		($subOneCount >= 3 ? $subLevel = 2 : $subLevel = 1));
+        /*---------------------------------------------*/
+
+        if($ansEntSubTwo1 == $subTwoQuestions["28-12"]) {
+	$subTwoCount++;
+        }
+
+        if($ansEntSubTwo2 == $subTwoQuestions["75-25"]) {
+	$subTwoCount++;
+        }
+
+        if($ansEntSubTwo3 == $subTwoQuestions["99-14"]) {
+	$subTwoCount++;
+        }
+
+        if($ansEntSubTwo4 == $subTwoQuestions["72-58"]) {
+	$subTwoCount++;
+        }			
+	
+        /*---------------------------------------------*/
+
+        if($ansEntSubThree1 == $subThreeQuestions["333-102"]) {
+	$subThreeCount++;
+        }
+
+        if($ansEntSubThree2 == $subThreeQuestions["582-385"]) {
+	$subThreeCount++;
+        }
+
+        if($ansEntSubThree3 == $subThreeQuestions["745-215"]) {
+	$subThreeCount++;
+        }
+
+        if($ansEntSubThree4 == $subThreeQuestions["999-588"]) {
+	$subThreeCount++;
+        }				
+	
+
+        /*---------------------------------------------*/
+
+        /*Mult*/
+        if($ansMultOne1 == $multOneQuestions["2x1"]) {
+	$multOneCount++;
+        }
+
+        if($ansMultOne2 == $multOneQuestions["3x3"]) {
+	$multOneCount++;
+        }
+
+        if($ansMultOne3 == $multOneQuestions["7x6"]) {
+	$multOneCount++;
+        }   
+
+        if($ansMultOne4 == $multOneQuestions["9x8"]) {
+	$multOneCount++;
+        }
+	
+	
+        /*---------------------------------------------*/
+
+        if($ansMultTwo1 == $multTwoQuestions["11x13"]) {
+	$multTwoCount++;
+        }
+
+        if($ansMultTwo2 == $multTwoQuestions["32x42"]) {
+	$multTwoCount++;
+        }
+
+        if($ansMultTwo3 == $multTwoQuestions["55x18"]) {
+	$multTwoCount++;
+        }
+
+        if($ansMultTwo4 == $multTwoQuestions["97x68"]) {
+	$multTwoCount++;
+        }	
 			
-	($multThreeCount >= 3 || $multTwoCount >= 3 ? $multLevel = 3 :
-		($multOneCount >= 3 ? $multLevel = 2 : $multLevel = 1));
+	
+        /*---------------------------------------------*/
+
+        if($ansMultThree1 == $multThreeQuestions["105x118"]) {
+	$multThreeCount++;
+        }
+
+        if($ansMultThree2 == $multThreeQuestions["395x222"]) {
+	$multThreeCount++;
+        }
+
+        if($ansMultThree3 == $multThreeQuestions["632x539"]) {
+	$multThreeCount++;
+        }
+
+        if($ansMultThree4 == $multThreeQuestions["955x666"]) {
+	$multThreeCount++;
+        }	
 		
-	($divThreeCount >= 3 || $divTwoCount >= 3 ? $divLevel = 3 :
-		($divOneCount >= 3 ? $divLevel = 2 : $divLevel = 1));
+	
+        /*---------------------------------------------*/
+
+        /*Div*/
+        if($ansDivOne1 == $divOneQuestions["2/1"]) {
+	$divOneCount++;
+        }
+
+        if($ansDivOne2 == $divOneQuestions["4/2"]) {
+	$divOneCount++;
+        }
+
+        if($ansDivOne3 == $divOneQuestions["9/3"]) {
+	$divOneCount++;
+        }
+
+        if($ansDivOne4 == $divOneQuestions["8/2"]) {
+	$divOneCount++;
+        }		
+	
+        /*---------------------------------------------*/
+
+        if($ansDivTwo1 == $divTwoQuestions["44/11"]) {
+	$divTwoCount++;
+        }
+
+        if($ansDivTwo2 == $divTwoQuestions["99/33"]) {
+	$divTwoCount++;
+        }
+
+        if($ansDivTwo3 == $divTwoQuestions["84/21"]) {
+	$divTwoCount++;
+        }
+
+        if($ansDivTwo4 == $divTwoQuestions["96/32"]) {
+	$divTwoCount++;
+        }	
+	
+        /*---------------------------------------------*/
+
+        if($ansDivThree1 == $divThreeQuestions["496/8"]) {
+	$divThreeCount++;
+        }
+
+        if($ansDivThree2 == $divThreeQuestions["306/6"]) {
+	$divThreeCount++;
+        }
+
+        if($ansDivThree3 == $divThreeQuestions["279/9"]) {
+	$divThreeCount++;
+        }
+
+        if($ansDivThree4 == $divThreeQuestions["612/6"]) {
+	$divThreeCount++;
+        }			
+	
+	
+	
+        if($addThreeCount >= 3 || $addTwoCount >= 3){
+            $addLevel = 3;
+        }else if($addOneCount >= 3) {
+            $addLevel = 2;
+        }else{
+            $addLevel = 1;
+        }
+        
+        if($subThreeCount >= 3 || $subTwoCount >= 3){
+            $subLevel = 3;
+		}else if($subOneCount >= 3) {
+            $subLevel = 2;
+        }else{
+            $subLevel = 1;
+        }
+
+        
+        if($multThreeCount >= 3 || $multTwoCount >= 3){
+            $multLevel = 3;
+        }else if($multOneCount >= 3) {
+            $multLevel = 2;
+        }else{
+            $multLevel = 1;
+        }
+        
+        if($divThreeCount >= 3 || $divTwoCount >= 3){
+            $divLevel = 3;
+        }else if($divOneCount >= 3) {
+            $divLevel = 2;
+        }else{
+            $divLevel = 1;
+        }
+        var_dump($divThreeCount);
+        var_dump($addOneCount);
+        var_dump($addOneQuestions["1+1"]);
+        var_dump($ansEntAddOne1);
         
         student_db::update_student($_SESSION['loggedInUser']->getStudentID(), $_SESSION['loggedInUser']->getFName(), $_SESSION['loggedInUser']->getLName(), $addLevel, $subLevel, $multLevel, $divLevel, $_SESSION['loggedInUser']->getTeacherID());
         

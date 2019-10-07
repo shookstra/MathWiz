@@ -2,7 +2,7 @@
 
 
     <body>
-
+        <p><?php if($ansEntAddOne1 === $addOneQuestions["1+1"]){?> <p>hi</p> <?php }else{ ?> <p>nope</p> <?php } ?></p>
             <div id="wrapper">
                 <h2>Congratulations, <?php echo $_SESSION['loggedInUser']->getFName(); ?></h2>
                 
