@@ -1,9 +1,7 @@
 <?php 
     
 
-    switch($type){
-        case 'addition' ;
-    
+    if($type == 'addition'){
 	for($i = 0; $i < 10; $i++){
 		$first = mt_rand($min, $max);
 		$second = mt_rand($min, $max);
@@ -12,11 +10,8 @@
                     if(array_key_exists($q, $questions)){
 		$i--;}
         }
-	die();	
-	break;
-        
-        case 'subtraction';
-	
+    } else if($type == 'subtraction'){
+
 	for($i = 0; $i < 10; $i++){
 		$first = mt_rand($min, $max);
 		$second = mt_rand($min, $max);
@@ -32,10 +27,7 @@
 			$i--;}
 		}
         }
-	die();
-        break;
-        
-        case 'multiplication':
+    }else if($type == 'multiplication'){
 	
 	for($i = 0; $i < 10; $i++){
 		$first = mt_rand($min, $max);
@@ -45,11 +37,8 @@
 		if(array_key_exists($q, $questions)){
 		$i--;}
         }
-	die();
-        break;
-        
-        case 'division':
-	
+    } else {
+
 	for($i = 0; $i < 10; $i++){
 		$first = mt_rand($min, $max);
 		$second = mt_rand($min, $max);
@@ -58,10 +47,7 @@
 		if(array_key_exists($q, $questions)){
 		$i--;}
         }
-        
-        die();
-        break;
-        }
+}
 
    
         $a = 'answer00';

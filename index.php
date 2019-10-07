@@ -102,7 +102,7 @@ switch ($action) {
 
     case 'drills' :
 	$student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
-		
+	$_SESSION['type'] = $type;
         include('view/drillPage.php');
         die();
         break;
@@ -112,6 +112,8 @@ switch ($action) {
         $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
             
 	$type = filter_input(INPUT_POST, 'type');
+        $_SESSION['type'] = $type;
+        
 	if($type = "addition") {
 	$level = $student->getAdditionLevel();
 	if($level == 1){
