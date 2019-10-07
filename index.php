@@ -31,6 +31,8 @@ switch ($action) {
             include('view/studentProfile.php');
         } else if ($_SESSION['userType'] == "teacher") {
             include('view/teacherProfile.php');
+        } else if ($_SESSION['userType'] == "admin") {
+            include('view/adminProfile.php');
         }
 
         die();
@@ -89,101 +91,113 @@ switch ($action) {
             }
             die();
             break;
-        } else {
+        } else
+        if ($userType == 'admin') {
             //getting admin ID from db
             $admin = admin_db::get_admin_by_id($userID);
             //setting session for user
             //$_SESSION['loggedInUser'] = $userID;
 
-            include('view/adminProfile.php');
+            if ($password == null || $userID == null) {
+                $errors = "Cannot have missing inputs.";
+                include('view/login.php');
+            } else if ($password == $admin->getPassword()) {
+                //setting session for user
+                $_SESSION['loggedInUser'] = $admin;
+                $_SESSION['userType'] = $userType;
+                include('view/adminProfile.php');
+            } else {
+                $errors = "Incorrect login.";
+                include('view/login.php');
+            }
             die();
             break;
         }
 
     case 'drills' :
-	$student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
-		
+        $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
+
         include('view/drillPage.php');
         die();
         break;
-		
-	case 'doDrills':
-            
+
+    case 'doDrills':
+
         $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
-            
-	$type = filter_input(INPUT_POST, 'type');
-	if($type = "addition") {
-	$level = $student->getAdditionLevel();
-	if($level == 1){
-		$min = 0;
-		$max = 9;
-	} else if ($level == 2){
-		$min = 10;
-		$max = 99;
-	} else {
-		$min = 100;
-		$max = 999;
-	}
-	} else if ($type = "subtraction") {
-	$level = $student->getSubtractionLevel();
-        
-	if($level == 1){
-		$min = 0;
-		$max = 9;
-	} else if ($level == 2){
-		$min = 10;
-		$max = 99;
-	} else {
-		$min = 100;
-		$max = 999;
-	}
-	} else if ($type = "multiplication") {
-	$level = $student->getMultiplicationLevel();
-	if($level == 1){
-		$min = 0;
-		$max = 9;
-	} else if ($level == 2){
-		$min = 10;
-		$max = 99;
-	} else {
-		$min = 100;
-		$max = 999;
-	}
-	} else {
-	$level = $student->getDivisionLevel();
-	if($level == 1){
-		$min = 0;
-		$max = 9;
-	} else if ($level == 2){
-		$min = 10;
-		$max = 99;
-	} else {
-		$min = 100;
-		$max = 999;
-	}
-	}	
-		
-		
-	include('view/drills.php');
+
+        $type = filter_input(INPUT_POST, 'type');
+        if ($type = "addition") {
+            $level = $student->getAdditionLevel();
+            if ($level == 1) {
+                $min = 0;
+                $max = 9;
+            } else if ($level == 2) {
+                $min = 10;
+                $max = 99;
+            } else {
+                $min = 100;
+                $max = 999;
+            }
+        } else if ($type = "subtraction") {
+            $level = $student->getSubtractionLevel();
+
+            if ($level == 1) {
+                $min = 0;
+                $max = 9;
+            } else if ($level == 2) {
+                $min = 10;
+                $max = 99;
+            } else {
+                $min = 100;
+                $max = 999;
+            }
+        } else if ($type = "multiplication") {
+            $level = $student->getMultiplicationLevel();
+            if ($level == 1) {
+                $min = 0;
+                $max = 9;
+            } else if ($level == 2) {
+                $min = 10;
+                $max = 99;
+            } else {
+                $min = 100;
+                $max = 999;
+            }
+        } else {
+            $level = $student->getDivisionLevel();
+            if ($level == 1) {
+                $min = 0;
+                $max = 9;
+            } else if ($level == 2) {
+                $min = 10;
+                $max = 99;
+            } else {
+                $min = 100;
+                $max = 999;
+            }
+        }
+
+
+        include('view/drills.php');
         die();
         break;
-		
-	case 'drillsResults' :
+
+    case 'drillsResults' :
         include('view/drillsResults.php');
         die();
-        break;	
-	
+        break;
+
     case 'tests' :
         include('view/tests.php');
         die();
         break;
-		
-	case 'takeTest' :
+
+    case 'takeTest' :
         include('view/takeTest.php');
         die();
         break;
-		
-	case 'testResults' :
+
+    case 'testResults' :
         include('view/testResults.php');
         die();
         break;
