@@ -101,11 +101,90 @@ switch ($action) {
         }
 
     case 'drills' :
+	$student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
+		
         include('view/drillPage.php');
         die();
         break;
+		
+	case 'doDrills':
+            
+        $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
+            
+	$type = filter_input(INPUT_POST, 'type');
+	if($type = "addition") {
+	$level = $student->getAdditionLevel();
+	if($level == 1){
+		$min = 0;
+		$max = 9;
+	} else if ($level == 2){
+		$min = 10;
+		$max = 99;
+	} else {
+		$min = 100;
+		$max = 999;
+	}
+	} else if ($type = "subtraction") {
+	$level = $student->getSubtractionLevel();
+        
+	if($level == 1){
+		$min = 0;
+		$max = 9;
+	} else if ($level == 2){
+		$min = 10;
+		$max = 99;
+	} else {
+		$min = 100;
+		$max = 999;
+	}
+	} else if ($type = "multiplication") {
+	$level = $student->getMultiplicationLevel();
+	if($level == 1){
+		$min = 0;
+		$max = 9;
+	} else if ($level == 2){
+		$min = 10;
+		$max = 99;
+	} else {
+		$min = 100;
+		$max = 999;
+	}
+	} else {
+	$level = $student->getDivisionLevel();
+	if($level == 1){
+		$min = 0;
+		$max = 9;
+	} else if ($level == 2){
+		$min = 10;
+		$max = 99;
+	} else {
+		$min = 100;
+		$max = 999;
+	}
+	}	
+		
+		
+	include('view/drills.php');
+        die();
+        break;
+		
+	case 'drillsResults' :
+        include('view/drillsResults.php');
+        die();
+        break;	
+	
     case 'tests' :
         include('view/tests.php');
+        die();
+        break;
+		
+	case 'takeTest' :
+        include('view/takeTest.php');
+        die();
+        break;
+		
+	case 'testResults' :
+        include('view/testResults.php');
         die();
         break;
     case 'baseline' :
@@ -733,8 +812,22 @@ switch ($action) {
         session_destroy();
         header("Refresh:0");
         include("view/home.php");
+        die();
+        break;
     case 'changePass':
         include('view/changePass.php');
+        die();
+        break;
+    case 'actualPassChange':
+        include('view/passwordChanged.php');
+        die();
+        break;
+    case 'newUser':
+        include('view/newUser.php');
+        die();
+        break;
+    case 'createUser':
+        include('view/userCreated.php');
         die();
         break;
 }

@@ -1,4 +1,75 @@
+<?php 
+    
+
+    switch($type){
+        case 'addition' ;
+    
+	for($i = 0; $i < 10; $i++){
+		$first = mt_rand($min, $max);
+		$second = mt_rand($min, $max);
+		$questions[$first."+".$second] = $first+$second;
+                $q = $questions[$first."+".$second];
+                    if(array_key_exists($q, $questions)){
+		$i--;}
+        }
+	die();	
+	break;
+        
+        case 'subtraction';
+	
+	for($i = 0; $i < 10; $i++){
+		$first = mt_rand($min, $max);
+		$second = mt_rand($min, $max);
+		if($first > $second){
+			$questions[$first."-".$second] = $first-$second;
+                        $q = $questions[$first."-".$second];
+			if(array_key_exists($q, $questions)){
+			$i--;}
+		} else {
+			$questions[$second."-".$first] = $second-$first;
+                        $q = $questions[$first."-".$second];
+			if(array_key_exists($q, $questions)){
+			$i--;}
+		}
+        }
+	die();
+        break;
+        
+        case 'multiplication':
+	
+	for($i = 0; $i < 10; $i++){
+		$first = mt_rand($min, $max);
+		$second = mt_rand($min, $max);
+		$questions[$first."*".$second] = $first*$second;
+                $q = $questions[$first."*".$second];
+		if(array_key_exists($q, $questions)){
+		$i--;}
+        }
+	die();
+        break;
+        
+        case 'division':
+	
+	for($i = 0; $i < 10; $i++){
+		$first = mt_rand($min, $max);
+		$second = mt_rand($min, $max);
+		$questions[$first."/".$second] = $first/$second;
+                $q = $questions[$first."/".$second];
+		if(array_key_exists($q, $questions)){
+		$i--;}
+        }
+        
+        die();
+        break;
+        }
+
+   
+        $a = 'answer00';
+        
+        ?>
+
 <?php include '/xampp/htdocs/mathwiz/view/header.php'; ?>
+
     
 
         <div id="wrapper">
