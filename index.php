@@ -107,7 +107,7 @@ switch ($action) {
         die();
         break;
 		
-	case 'doDrills':
+    case 'doDrills':
             
         $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
             
@@ -168,7 +168,7 @@ switch ($action) {
         die();
         break;
 		
-	case 'drillsResults' :
+    case 'drillsResults' :
         include('view/drillsResults.php');
         die();
         break;	
@@ -178,15 +178,16 @@ switch ($action) {
         die();
         break;
 		
-	case 'takeTest' :
+    case 'takeTest' :
         include('view/takeTest.php');
         die();
         break;
 		
-	case 'testResults' :
+    case 'testResults' :
         include('view/testResults.php');
         die();
         break;
+    
     case 'baseline' :
         $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
 
