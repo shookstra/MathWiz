@@ -8,8 +8,9 @@
             <h1>Math Drills Site</h1>
         </div>
         <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
-        <h2>Profile</h2>
+
         <div class="content">
+            <h2>Profile</h2>
             <p>StudentID: <?php echo $_SESSION['loggedInUser']->getStudentID() ?></p>
             <p>Password: <?php echo $_SESSION['loggedInUser']->getPassword() ?></p>
             <p>First Name: <?php echo $_SESSION['loggedInUser']->getFName() ?></p>
