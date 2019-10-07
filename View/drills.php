@@ -1,11 +1,12 @@
 <?php 
-    
+    $answerSheet = 'answerSheet00';
 
     if($type == 'addition'){
-	for($i = 0; $i < 10; $i++){
+	for($i = 1; $i <= 10; $i++){
 		$first = mt_rand($min, $max);
 		$second = mt_rand($min, $max);
 		$questions[$first."+".$second] = $first+$second;
+                ++$answerSheet;
                 $q = $questions[$first."+".$second];
                     if(array_key_exists($q, $questions)){
 		$i--;}
@@ -17,12 +18,14 @@
 		$second = mt_rand($min, $max);
 		if($first > $second){
 			$questions[$first."-".$second] = $first-$second;
+                        ++$answerSheet;
                         $q = $questions[$first."-".$second];
 			if(array_key_exists($q, $questions)){
 			$i--;}
 		} else {
 			$questions[$second."-".$first] = $second-$first;
-                        $q = $questions[$first."-".$second];
+                        ++$answerSheet;
+                        $q = $questions[$second."-".$first];
 			if(array_key_exists($q, $questions)){
 			$i--;}
 		}
@@ -33,6 +36,7 @@
 		$first = mt_rand($min, $max);
 		$second = mt_rand($min, $max);
 		$questions[$first."*".$second] = $first*$second;
+                ++$answerSheet;
                 $q = $questions[$first."*".$second];
 		if(array_key_exists($q, $questions)){
 		$i--;}
@@ -43,12 +47,15 @@
 		$first = mt_rand($min, $max);
 		$second = mt_rand($min, $max);
 		$questions[$first."/".$second] = $first/$second;
+                ++$answerSheet;
                 $q = $questions[$first."/".$second];
 		if(array_key_exists($q, $questions)){
 		$i--;}
         }
 }
-
+        var_dump($type);
+        var_dump($min);
+        var_dump($max);
    
         $a = 'answer00';
         
@@ -64,7 +71,7 @@
 
        <div class="content"> 
                  <h2>Drills</h2>
-        <p><?php echo $student->getFName(); ?>, take your time and read the questions carefully. Dont rush through the drill, and make sure to answer each question.</p>
+        <p><?php echo $student->getFName(); ?>, take your time and read the questions carefully. Dont rush through the drill, and make sure to answer each question. If you do not enter an answer it scores it as a 0.</p>
         
         
         <table>

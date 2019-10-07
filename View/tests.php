@@ -1,10 +1,10 @@
-<?php include 'xampp/htdocs/mathwiz/view/header.php'; ?>
+<?php include '/xampp/htdocs/mathwiz/view/header.php'; ?>
 
     <body>
         <div id="wrapper">
 
              
-            <?php include 'xampp/htdocs/mathwiz/view/nav.php'; ?>
+            <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
            
             <div class="content"> 
                  <h2>Master Tests</h2>
@@ -28,4 +28,4 @@
         </div>
         
         
-<?php include 'xampp/htdocs/mathwiz/view/footer.php'; ?>
+<?php include '/xampp/htdocs/mathwiz/view/footer.php'; ?>
