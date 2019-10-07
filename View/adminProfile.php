@@ -9,6 +9,10 @@
         <h2>Welcome, <?php echo $_SESSION['loggedInUser']->getFName() . " " . $_SESSION['loggedInUser']->getLName(); ?></h2>
 
         <div class="content">
+
+            <p>Admin ID: <?php echo $_SESSION['loggedInUser']->getAdminID(); ?></p>
+            <p>Password: <?php echo $_SESSION['loggedInUser']->getPassword(); ?></p>
+
             <table>
                 <tr>
                     <th>Teacher First Name</th>

@@ -54,12 +54,14 @@
 
             <?php if (isset($_SESSION)) { ?>
                 <?php if (!empty($_SESSION['loggedInUser']) && $_SESSION['userType'] == 'student') { ?>
-                    <td>
-                        <form action="index.php" method="post">
-                            <input type="hidden" value="baseline" name="action">
-                            <input class="button" type="submit" value="Baseline Test">
-                        </form>
-                    </td>
+                    <?php if ($_SESSION['loggedInUser']->getAdditionLevel() == 1) { ?>
+                        <td>
+                            <form action="index.php" method="post">
+                                <input type="hidden" value="baseline" name="action">
+                                <input class="button" type="submit" value="Baseline Test">
+                            </form>
+                        </td>
+                    <?php } ?>
                 <?php } ?>
             <?php } ?>
 

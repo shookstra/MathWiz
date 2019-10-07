@@ -1,8 +1,7 @@
 <?php
 
 class admin_db {
-    
-    
+
     public static function select_all() {
         $db = Database::getDB();
 
@@ -19,10 +18,8 @@ class admin_db {
 
         return $admin;
     }
-	
-	
-	
-public static function get_admin_by_id($adminID) {
+
+    public static function get_admin_by_id($adminID) {
         $db = Database::getDB();
         $query = 'SELECT *
               FROM admin
@@ -32,20 +29,16 @@ public static function get_admin_by_id($adminID) {
         $statement->bindValue(':adminID', $adminID);
         $statement->execute();
         $value = $statement->fetch();
-        
-        $admin = new admin($value['adminID'], $value['password'], $value['$fName'], $value['lName']);
-        
+
+        $admin = new admin($value['adminID'], $value['password'], $value['fName'], $value['lName']);
+
         $statement->closeCursor();
 
         return $admin;
     }
-	
-	
-	
-	
-	
-public static function update_admin($adminID, $password, $fName, $lName) {
-        
+
+    public static function update_admin($adminID, $password, $fName, $lName) {
+
 
         $db = Database::getDB();
         $query = $query = 'UPDATE admin
@@ -67,10 +60,8 @@ public static function update_admin($adminID, $password, $fName, $lName) {
             display_db_error($error_message);
         }
     }
-	
-	
-	
-public static function delete_by_ID($adminID) {
+
+    public static function delete_by_ID($adminID) {
         $db = Database::getDB();
         $query = 'DELETE from teacher WHERE adminID= :adminID';
         try {
@@ -84,8 +75,7 @@ public static function delete_by_ID($adminID) {
             display_db_error($error_message);
         }
     }
-    
-    
+
     public static function validate_admin_login($adminID, $adminPassword) {
         $db = Database::getDB();
         $query = 'SELECT *
@@ -97,14 +87,14 @@ public static function delete_by_ID($adminID) {
         $statement->bindValue(':password', $adminPassword);
         $statement->execute();
         $value = $statement->fetch();
-        
+
         $theAdmin = new admin($value['adminID'], $value['password'], $value['fName'], $value['lName']);
 
         $statement->closeCursor();
 
         return $theAdmin;
     }
-    
+
     public static function get_teacher_info($adminID, $adminPassword) {
         $db = Database::getDB();
         $query = 'SELECT *
@@ -116,15 +106,15 @@ public static function delete_by_ID($adminID) {
         $statement->bindValue(':password', $adminPassword);
         $statement->execute();
         $value = $statement->fetch();
-        
+
         $theAdmin = new admin($value['adminID'], $value['password'], $value['fName'], $value['lName']);
 
         $statement->closeCursor();
 
         return $theAdmin;
     }
-    
-    public static function teacher_numbers($teacherID){
+
+    public static function teacher_numbers($teacherID) {
         $db = Database::getDB();
         $query = 'SELECT COUNT(student.studentID) AS "TotalStudents", (SUM(student.additionLevel)/COUNT(student.studentID) AS "totalAdditionLevel", (SUM(InvoiceTotal)/COUNT(InvoiceNum)) AS "invoiceAvg", UserName'
                 . ' FROM invoices '
@@ -134,12 +124,13 @@ public static function delete_by_ID($adminID) {
         $statement->bindValue(':storeIDNum', $storeIDNum);
         $statement->execute();
         $row = $statement->fetch();
-        
-        
+
+
         $invoiceNumbers[$row['UserName']] = new numbers(
-                    $row['UserName'], $row['invoiceTotals'], $row['invoiceAvg'], $row['invoiceCount']);
-        
+                $row['UserName'], $row['invoiceTotals'], $row['invoiceAvg'], $row['invoiceCount']);
+
         $statement->closeCursor();
         return $invoiceNumbers;
     }
+
 }
