@@ -1,6 +1,4 @@
-<?php // echo var_dump($_SESSION)            ?>
 <div id="nav">
-
     <table>
         <tr>
             <td>

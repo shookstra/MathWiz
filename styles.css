@@ -49,6 +49,11 @@ body{
     text-decoration: none;
     cursor: pointer;
     background-color: #eee;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #ccc;
 }
 
 input {
