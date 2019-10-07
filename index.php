@@ -116,7 +116,7 @@ switch ($action) {
 
     case 'drills' :
         $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
-
+        $_SESSION['loggedInUser'] = $student;
         include('view/drillPage.php');
         die();
         break;
