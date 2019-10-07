@@ -1,8 +1,7 @@
 <?php
 
-        
 class teacher_db {
-    
+
     public static function select_all() {
         $db = Database::getDB();
 
@@ -19,10 +18,8 @@ class teacher_db {
 
         return $teacher;
     }
-	
-	
-	
-public static function get_teacher_by_id($teacherID) {
+
+    public static function get_teacher_by_id($teacherID) {
         $db = Database::getDB();
         $query = 'SELECT *
               FROM teacher
@@ -32,20 +29,16 @@ public static function get_teacher_by_id($teacherID) {
         $statement->bindValue(':teacherID', $teacherID);
         $statement->execute();
         $value = $statement->fetch();
-        
-        $teacher = new teacher($value['teacherID'], $value['password'], $value['$fName'], $value['lName']);
-        
+
+        $teacher = new teacher($value['teacherID'], $value['password'], $value['fName'], $value['lName']);
+
         $statement->closeCursor();
 
         return $teacher;
     }
-	
-	
-	
-	
-	
-public static function update_teacher($teacherID, $password, $fName, $lName) {
-        
+
+    public static function update_teacher($teacherID, $password, $fName, $lName) {
+
 
         $db = Database::getDB();
         $query = $query = 'UPDATE teacher
@@ -67,10 +60,8 @@ public static function update_teacher($teacherID, $password, $fName, $lName) {
             display_db_error($error_message);
         }
     }
-	
-	
-	
-public static function delete_by_ID($teacherID) {
+
+    public static function delete_by_ID($teacherID) {
         $db = Database::getDB();
         $query = 'DELETE from teacher WHERE teacherID= :teacherID';
         try {
@@ -84,8 +75,7 @@ public static function delete_by_ID($teacherID) {
             display_db_error($error_message);
         }
     }
-    
-    
+
     public static function validate_teacher_login($teacherID, $teacherPassword) {
         $db = Database::getDB();
         $query = 'SELECT *
@@ -97,7 +87,7 @@ public static function delete_by_ID($teacherID) {
         $statement->bindValue(':password', $teacherPassword);
         $statement->execute();
         $value = $statement->fetch();
-        
+
         $theTeacher = new teacher($value['teacherID'], $value['password'], $value['fName'], $value['lName']);
 
         $statement->closeCursor();
