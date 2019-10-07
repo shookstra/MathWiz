@@ -31,6 +31,8 @@ switch ($action) {
             include('view/studentProfile.php');
         } else if ($_SESSION['userType'] == "teacher") {
             include('view/teacherProfile.php');
+        } else if ($_SESSION['userType'] == "admin") {
+            include('view/adminProfile.php');
         }
 
         die();
@@ -89,13 +91,25 @@ switch ($action) {
             }
             die();
             break;
-        } else {
+        } else
+        if ($userType == 'admin') {
             //getting admin ID from db
             $admin = admin_db::get_admin_by_id($userID);
             //setting session for user
             //$_SESSION['loggedInUser'] = $userID;
 
-            include('view/adminProfile.php');
+            if ($password == null || $userID == null) {
+                $errors = "Cannot have missing inputs.";
+                include('view/login.php');
+            } else if ($password == $admin->getPassword()) {
+                //setting session for user
+                $_SESSION['loggedInUser'] = $admin;
+                $_SESSION['userType'] = $userType;
+                include('view/adminProfile.php');
+            } else {
+                $errors = "Incorrect login.";
+                include('view/login.php');
+            }
             die();
             break;
         }
@@ -110,6 +124,8 @@ switch ($action) {
     case 'doDrills':
             
         $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
+        die();
+        break;
             
 	$type = filter_input(INPUT_POST, 'type');
         $_SESSION['type'] = $type;
@@ -167,130 +183,17 @@ switch ($action) {
 		
 		
 	include('view/drills.php');
-        die();
-        break;
-		
-    case 'drillsResults' :
-        
-        $right = 0;
-        
-        
-        $answerEnt1 = filter_input(INPUT_POST, 'answer01');
-        $answerEnt2 = filter_input(INPUT_POST, 'answer02');
-        $answerEnt3 = filter_input(INPUT_POST, 'answer03');
-        $answerEnt4 = filter_input(INPUT_POST, 'answer04');
-
-        /* AddTwo; */
-        $answerEnt5 = filter_input(INPUT_POST, 'answer05');
-        $answerEnt6 = filter_input(INPUT_POST, 'answer06');
-        $answerEnt7 = filter_input(INPUT_POST, 'answer07');
-        $answerEnt8 = filter_input(INPUT_POST, 'answer08');
-
-        /* AddThree; */
-        $answerEnt9 = filter_input(INPUT_POST, 'answer09');
-        $answerEnt10 = filter_input(INPUT_POST, 'answer10');
-        
-        if($answerEnt1 == $answerSheet1) {
-            $right++;
-        }
-        if($answerEnt2 == $answerSheet2) {
-            $right++;
-        }
-        if($answerEnt3 == $answerSheet3) {
-            $right++;
-        }
-        if($answerEnt4 == $answerSheet4) {
-            $right++;
-        }
-        if($answerEnt5 == $answerSheet5) {
-            $right++;
-        }
-        if($answerEnt6 == $answerSheet6) {
-            $right++;
-        }
-        if($answerEnt7 == $answerSheet7) {
-            $right++;
-        }
-        if($answerEnt8 == $answerSheet8) {
-            $right++;
-        }
-        if($answerEnt9 == $answerSheet9) {
-            $right++;
-        }
-        if($answerEnt10 == $answerSheet10) {
-            $right++;
-        }
         include('view/drillsResults.php');
         die();
-        break;	
-	
+        break;
+
     case 'tests' :
         include('view/tests.php');
         die();
         break;
-		
-    case 'takeTest' :
-        $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
-            
-	$type = filter_input(INPUT_POST, 'type');
-        $_SESSION['type'] = $type;
-        
-	if($type == "addition") {
-	$level = $student->getAdditionLevel();
-	if($level == 1){
-		$min = 0;
-		$max = 9;
-	} else if ($level == 2){
-		$min = 10;
-		$max = 99;
-	} else {
-		$min = 100;
-		$max = 999;
-	}
-	} else if ($type == "subtraction") {
-	$level = $student->getSubtractionLevel();
-        
-	if($level == 1){
-		$min = 0;
-		$max = 9;
-	} else if ($level == 2){
-		$min = 10;
-		$max = 99;
-	} else {
-		$min = 100;
-		$max = 999;
-	}
-	} else if ($type == "multiplication") {
-	$level = $student->getMultiplicationLevel();
-	if($level == 1){
-		$min = 0;
-		$max = 9;
-	} else if ($level == 2){
-		$min = 10;
-		$max = 99;
-	} else {
-		$min = 100;
-		$max = 999;
-	}
-	} else {
-	$level = $student->getDivisionLevel();
-	if($level == 1){
-		$min = 0;
-		$max = 9;
-	} else if ($level == 2){
-		$min = 10;
-		$max = 99;
-	} else {
-		$min = 100;
-		$max = 999;
-	}
-	}
-        
-        
         include('view/takeTest.php');
         die();
         break;
-		
     case 'testResults' :
         include('view/testResults.php');
         die();

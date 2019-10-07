@@ -1,7 +1,7 @@
 <?php include '/xampp/htdocs/mathwiz/view/header.php'; ?>
 
-    <body>
-        <div id="wrapper">
+<body>
+    <div id="wrapper">
 
              
             <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>

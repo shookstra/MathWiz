@@ -1,6 +1,4 @@
-<?php // echo var_dump($_SESSION)          ?>
 <div id="nav">
-
     <table>
         <tr>
             <td>
@@ -33,7 +31,7 @@
             <?php } ?>
 
             <?php if (isset($_SESSION)) { ?>
-                <?php if (!empty($_SESSION['loggedInUser'])) { ?>
+                <?php if (!empty($_SESSION['loggedInUser']) && $_SESSION['userType'] == 'student') { ?>
                     <td>
                         <form action="index.php" method="post">
                             <input type="hidden" value="drills" name="action">
@@ -44,7 +42,7 @@
             <?php } ?>
 
             <?php if (isset($_SESSION)) { ?>
-                <?php if (!empty($_SESSION['loggedInUser'])) { ?>
+                <?php if (!empty($_SESSION['loggedInUser']) && $_SESSION['userType'] == 'student') { ?>
                     <td>
                         <form action="index.php" method="post">
                             <input type="hidden" value="tests" name="action">
@@ -55,7 +53,7 @@
             <?php } ?>
 
             <?php if (isset($_SESSION)) { ?>
-                <?php if (!empty($_SESSION['loggedInUser'])) { ?>
+                <?php if (!empty($_SESSION['loggedInUser']) && $_SESSION['userType'] == 'student') { ?>
                     <td>
                         <form action="index.php" method="post">
                             <input type="hidden" value="baseline" name="action">

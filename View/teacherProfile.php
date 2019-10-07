@@ -3,9 +3,7 @@
 
 <body>
     <div id="wrapper">
-        <div id="heading">
-            <h1>Math Drills Site</h1>
-        </div>
+        <?php include '/xampp/htdocs/mathwiz/view/headerElement.php'; ?>
         <?php include '/xampp/htdocs/mathwiz/view/nav.php'; ?>
         <br>
         <h2>Welcome, <?php echo $_SESSION['loggedInUser']->getFName() . " " . $_SESSION['loggedInUser']->getLName(); ?></h2>
