@@ -1,4 +1,4 @@
-<?php // echo var_dump($_SESSION)         ?>
+<?php // echo var_dump($_SESSION)          ?>
 <div id="nav">
 
     <table>
@@ -25,7 +25,7 @@
                 <?php if (!empty($_SESSION['loggedInUser'])) { ?>
                     <td>
                         <form action="index.php" method="post">
-                            <input type="hidden" value="viewStudent" name="action">
+                            <input type="hidden" value="profile" name="action">
                             <input class="button" type="submit" value="Profile">
                         </form>
                     </td>
