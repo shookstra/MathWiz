@@ -73,9 +73,7 @@
 }
         $_SESSION['answerSheet'] = $answerSheet;
         $_SESSION['questions'] = $questions;
-        var_dump($type);
-        var_dump($min);
-        var_dump($max);
+        
 
         
         $a = 'answer00';
@@ -116,7 +114,7 @@
                             <input type="text" name="<?php echo ++$a; ?>">
                             </form></td>
                     </tr>
-                    <p><?php echo $answerSheet[$value]; ?> </p>
+                    
                 <?php endforeach; ?>
 
             </table>

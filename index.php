@@ -32,10 +32,10 @@ switch ($action) {
             
             include('view/studentProfile.php');
         } else if ($_SESSION['userType'] == "teacher") {
-            $teacher = teacher_db::get_teacher_by_id($teacher->getTeacherID());
+            /*$teacher = teacher_db::get_teacher_by_id($teacher->getTeacherID());*/
             include('view/teacherProfile.php');
         } else if ($_SESSION['userType'] == "admin") {
-            $admin = admin_db::get_admin_by_id($admin->getAdminID());
+            /*$admin = admin_db::get_admin_by_id($admin->getAdminID());*/
             include('view/adminProfile.php');
         }
 
