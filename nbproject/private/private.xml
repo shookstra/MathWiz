@@ -6,11 +6,15 @@
             <file>file:/C:/xampp/htdocs/MathWiz/View/nav.php</file>
             <file>file:/C:/xampp/htdocs/MathWiz/index.php</file>
             <file>file:/C:/xampp/htdocs/MathWiz/View/baseline.php</file>
+            <file>file:/C:/xampp/htdocs/MathWiz/View/studentProfile.php</file>
             <file>file:/C:/xampp/htdocs/MathWiz/View/results.php</file>
+            <file>file:/C:/xampp/htdocs/MathWiz/View/takeTest.php</file>
+            <file>file:/C:/xampp/htdocs/MathWiz/View/testResults.php</file>
             <file>file:/C:/xampp/htdocs/MathWiz/Model/student_db.php</file>
-            <file>file:/C:/xampp/htdocs/MathWiz/Model/teacher_db.php</file>
-            <file>file:/C:/xampp/htdocs/MathWiz/Model/loginValidation.php</file>
-            <file>file:/C:/xampp/htdocs/MathWiz/View/login.php</file>
+            <file>file:/C:/xampp/htdocs/MathWiz/View/tests.php</file>
+            <file>file:/C:/xampp/htdocs/MathWiz/View/drillPage.php</file>
+            <file>file:/C:/xampp/htdocs/MathWiz/View/drills.php</file>
+            <file>file:/C:/xampp/htdocs/MathWiz/View/home.php</file>
         </group>
     </open-files>
 </project-private>

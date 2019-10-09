@@ -20,7 +20,7 @@
                     <option value="multiplication">Multiplication</option>
                     <option value="division">Division</option>
                 </select><br>
-                <input type="hidden" value="takeTest" name="action">
+                <input type="hidden" value="takeTests" name="action">
                 <input type="submit" value="Begin Test">
             </form>
 

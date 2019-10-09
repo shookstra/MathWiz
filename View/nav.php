@@ -1,3 +1,70 @@
+<!--<div id="nav">
+    <table>
+        <tr>
+            <td>
+                <form action="index.php" method="post">
+                    <input type="hidden" value="home" name="action">
+                    <input class="button" type="submit" value="Home">
+                </form>
+            </td>
+
+            
+                    <td>
+                        <form action="index.php" method="post">
+                            <input type="hidden" value="login" name="action">
+                            <input class="button" type="submit" value="Login">
+                        </form>
+                    </td>
+               
+
+           
+                    <td>
+                        <form action="index.php" method="post">
+                            <input type="hidden" value="profile" name="action">
+                            <input class="button" type="submit" value="Profile">
+                        </form>
+                    </td>
+                
+
+           
+                    <td>
+                        <form action="index.php" method="post">
+                            <input type="hidden" value="drills" name="action">
+                            <input class="button" type="submit" value="Drills">
+                        </form>
+                    </td>
+               
+
+            
+                    <td>
+                        <form action="index.php" method="post">
+                            <input type="hidden" value="tests" name="action">
+                            <input class="button" type="submit" value="Master Tests">
+                        </form>
+                    </td>
+                
+           
+                        <td>
+                            <form action="index.php" method="post">
+                                <input type="hidden" value="baseline" name="action">
+                                <input class="button" type="submit" value="Baseline Test">
+                            </form>
+                        </td>
+                    
+
+            
+                <td>
+                    <form action="index.php" method="post">
+                        <input type="hidden" value="logout" name="action">
+                        <input class="button" type="submit" value="Logout">
+                    </form>
+                </td>
+           
+        </tr>
+    </table>
+</div>-->
+
+
 <div id="nav">
     <table>
         <tr>
@@ -75,7 +142,7 @@
             <?php } ?>
         </tr>
     </table>
-</div>
+</div><!--
 
 
 <!--  <form action="index.php" method="post">

@@ -132,5 +132,102 @@ public static function delete_by_ID($studentID) {
 
         return $students;
     }
+    
+    public static function update_student_addLevel($studentID, $fName, $lName, $additionLevel) {
+        
+
+        $db = Database::getDB();
+        $query = $query = 'UPDATE student
+              SET fName = :fName,
+                  lName = :lName,
+                  additionLevel = :additionLevel
+                WHERE studentID = :studentID';
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':fName', $fName);
+            $statement->bindValue(':lName', $lName);
+            $statement->bindValue(':additionLevel', $additionLevel);
+            $statement->bindValue(':studentID', $studentID);
+            $row_count = $statement->execute();
+            $statement->closeCursor();
+            return $row_count;
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
+    
+    public static function update_student_subLevel($studentID, $fName, $lName, $subtractionLevel) {
+        
+
+        $db = Database::getDB();
+        $query = $query = 'UPDATE student
+              SET fName = :fName,
+                  lName = :lName,
+                  subtractionLevel = :subtractionLevel
+                WHERE studentID = :studentID';
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':fName', $fName);
+            $statement->bindValue(':lName', $lName);
+            $statement->bindValue(':subtractionLevel', $subtractionLevel);
+            $statement->bindValue(':studentID', $studentID);
+            $row_count = $statement->execute();
+            $statement->closeCursor();
+            return $row_count;
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
+    
+    public static function update_student_set_multLevel($studentID, $fName, $lName, $multiplicationLevel) {
+        
+
+        $db = Database::getDB();
+        $query = $query = 'UPDATE student
+              SET fName = :fName,
+                  lName = :lName,
+                  multiplicationLevel = :multiplicationLevel
+                WHERE studentID = :studentID';
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':fName', $fName);
+            $statement->bindValue(':lName', $lName);
+            $statement->bindValue(':multiplicationLevel', $multiplicationLevel);
+            $statement->bindValue(':divisionLevel', $divisionLevel);
+            $statement->bindValue(':studentID', $studentID);
+            $row_count = $statement->execute();
+            $statement->closeCursor();
+            return $row_count;
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
+    
+    public static function update_student_set_divLevel($studentID, $fName, $lName, $divisionLevel) {
+        
+
+        $db = Database::getDB();
+        $query = $query = 'UPDATE student
+              SET fName = :fName,
+                  lName = :lName,
+                  divisionLevel = :divisionLevel
+                WHERE studentID = :studentID';
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':fName', $fName);
+            $statement->bindValue(':lName', $lName);
+            $statement->bindValue(':divisionLevel', $divisionLevel);
+            $statement->bindValue(':studentID', $studentID);
+            $row_count = $statement->execute();
+            $statement->closeCursor();
+            return $row_count;
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
 }
 

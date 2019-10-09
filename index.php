@@ -28,10 +28,14 @@ switch ($action) {
         break;
     case 'profile':
         if ($_SESSION['userType'] == "student") {
+            $student = $_SESSION['loggedInUser'];
+            
             include('view/studentProfile.php');
         } else if ($_SESSION['userType'] == "teacher") {
+            $teacher = teacher_db::get_teacher_by_id($teacher->getTeacherID());
             include('view/teacherProfile.php');
         } else if ($_SESSION['userType'] == "admin") {
+            $admin = admin_db::get_admin_by_id($admin->getAdminID());
             include('view/adminProfile.php');
         }
 
@@ -68,7 +72,7 @@ switch ($action) {
                 $errors = "Incorrect login.";
                 include('view/login.php');
             }
-
+            
             die();
             break;
         } else if ($userType == 'teacher') {
@@ -168,7 +172,7 @@ switch ($action) {
 	} else {
 	$level = $student->getDivisionLevel();
 	if($level == 1){
-		$min = 0;
+		$min = 1;
 		$max = 9;
 	} else if ($level == 2){
 		$min = 10;
@@ -178,10 +182,98 @@ switch ($action) {
 		$max = 999;
 	}
 	}	
-        include('view/drillsResults.php');
+        
+
+        
+        include('view/drills.php');
         die();
         break;
+    case 'drillResults' :
+        $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
+        $wrong[] = $_SESSION['wrong'];
+        $right = $_SESSION['right'];
+        
+        $right = 0;
+        $wrong = [];
+        $answerSheet[] = $_SESSION['answerSheet'];
+        
+        $answer1 = filter_input(INPUT_POST, 'answer01');
+        $answer2 = filter_input(INPUT_POST, 'answer02');
+        $answer3 = filter_input(INPUT_POST, 'answer03');
+        $answer4 = filter_input(INPUT_POST, 'answer04');
+        $answer5 = filter_input(INPUT_POST, 'answer05');
+        $answer6 = filter_input(INPUT_POST, 'answer06');
+        $answer7 = filter_input(INPUT_POST, 'answer07');
+        $answer8 = filter_input(INPUT_POST, 'answer08');
+        $answer9 = filter_input(INPUT_POST, 'answer09');
+        $answer10 = filter_input(INPUT_POST, 'answer10');
+        
+        $answerSheet1 = filter_input(INPUT_POST, 'b01');
+        $answerSheet2 = filter_input(INPUT_POST, 'b02');
+        $answerSheet3 = filter_input(INPUT_POST, 'b03');
+        $answerSheet4 = filter_input(INPUT_POST, 'b04');
+        $answerSheet5 = filter_input(INPUT_POST, 'b05');
+        $answerSheet6 = filter_input(INPUT_POST, 'b06');
+        $answerSheet7 = filter_input(INPUT_POST, 'b07');
+        $answerSheet8 = filter_input(INPUT_POST, 'b08');
+        $answerSheet9 = filter_input(INPUT_POST, 'b09');
+        $answerSheet10 = filter_input(INPUT_POST, 'b10');
+        
+        if($answer1 == $answerSheet[1]) {
+            $right++;
+        } else {
+            $wrong[1] = $q[1];
+        }
+        if($answer2 == $answerSheet[2]) {
+            $right++;
+        }else {
+            $wrong[2] = $q[2];
+        }
+        if($answer3 == $answerSheet[3]) {
+            $right++;
+        }else {
+            $wrong[3] = $q[3];
+        }
+        if($answer4 == $answerSheet[4]) {
+            $right++;
+        }else {
+            $wrong[4] = $q[4];
+        }
+        if($answer5 == $answerSheet[5]) {
+            $right++;
+        }else {
+            $wrong[5] = $q[5];
+        }
+        if($answer6 == $answerSheet[6]) {
+            $right++;
+        }else {
+            $wrong[6] = $q[6];
+        }
+        if($answer7 == $answerSheet[7]) {
+            $right++;
+        }else {
+            $wrong[7] = $q[7];
+        }
+        if($answer8 == $answerSheet[8]) {
+            $right++;
+        }else {
+            $wrong[8] = $q[8];
+        }
+        if($answer9 == $answerSheet[9]) {
+            $right++;
+        }else {
+            $wrong[9] = $q[9];
+        }
+        if($answer10 == $answerSheet[10]) {
+            $right++;
+        }else {
+            $wrong[10] = $q[10];
+        }
 
+        var_dump($answerSheet1);
+        include('view/drillResults.php');
+        die();
+        break;
     case 'tests' :
         
         include('view/tests.php');
@@ -189,6 +281,9 @@ switch ($action) {
         break;
             
     case 'takeTests':
+        
+        $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
+        
         $type = filter_input(INPUT_POST, 'type');
         $_SESSION['type'] = $type;
         
@@ -232,7 +327,7 @@ switch ($action) {
 	} else {
 	$level = $student->getDivisionLevel();
 	if($level == 1){
-		$min = 0;
+		$min = 1;
 		$max = 9;
 	} else if ($level == 2){
 		$min = 10;
@@ -243,10 +338,105 @@ switch ($action) {
 	}
 	}
 	
+        
+            
         include('view/takeTest.php');
         die();
         break;
     case 'testResults' :
+        $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
+        $type = filter_input(INPUT_POST, 'type');
+        $_SESSION['type'] = $type;
+        
+        $right = 0;
+        
+        $answer1 = filter_input(INPUT_POST, 'answer01');
+        $answer2 = filter_input(INPUT_POST, 'answer02');
+        $answer3 = filter_input(INPUT_POST, 'answer03');
+        $answer4 = filter_input(INPUT_POST, 'answer04');
+        $answer5 = filter_input(INPUT_POST, 'answer05');
+        $answer6 = filter_input(INPUT_POST, 'answer06');
+        $answer7 = filter_input(INPUT_POST, 'answer07');
+        $answer8 = filter_input(INPUT_POST, 'answer08');
+        $answer9 = filter_input(INPUT_POST, 'answer09');
+        $answer10 = filter_input(INPUT_POST, 'answer10');
+        
+        $answerSheet1 = filter_input(INPUT_POST, 'answerSheet01');
+        $answerSheet2 = filter_input(INPUT_POST, 'answerSheet02');
+        $answerSheet3 = filter_input(INPUT_POST, 'answerSheet03');
+        $answerSheet4 = filter_input(INPUT_POST, 'answerSheet04');
+        $answerSheet5 = filter_input(INPUT_POST, 'answerSheet05');
+        $answerSheet6 = filter_input(INPUT_POST, 'answerSheet06');
+        $answerSheet7 = filter_input(INPUT_POST, 'answerSheet07');
+        $answerSheet8 = filter_input(INPUT_POST, 'answerSheet08');
+        $answerSheet9 = filter_input(INPUT_POST, 'answerSheet09');
+        $answerSheet10 = filter_input(INPUT_POST, 'answerSheet10');
+        
+        if($answer1 == $answerSheet1) {
+            $right++;
+        }
+        if($answer2 == $answerSheet2) {
+            $right++;
+        }
+        if($answer3 == $answerSheet3) {
+            $right++;
+        }
+        if($answer4 == $answerSheet4) {
+            $right++;
+        }
+        if($answer5 == $answerSheet5) {
+            $right++;
+        }
+        if($answer6 == $answerSheet6) {
+            $right++;
+        }
+        if($answer7 == $answerSheet7) {
+            $right++;
+        }
+        if($answer8 == $answerSheet8) {
+            $right++;
+        }
+        if($answer9 == $answerSheet9) {
+            $right++;
+        }
+        if($answer10 == $answerSheet10) {
+            $right++;
+        }
+        
+        if($right >= 7 && $type == "addition"){
+            if($student->getAdditionLevel() == 1 || $student->getAdditionLevel() == 0){
+            $addLevel = 2;
+            student_db::update_student_set_addLevel($student->getStudentID(), $student->getFName(), $student->getLName(), $addLevel);
+            } else if($student->getAdditionLevel() == 2){
+                $addLevel = 3;
+                student_db::update_student_set_addLevel($student->getStudentID(), $student->getFName(), $student->getLName(), $addLevel);
+            }
+        } else if($right >= 7 && $type == "subtraction"){
+            if($student->getSubtractionLevel() == 1 || $student->getSubtractionLevel() == 0){
+                $subLevel = 2;
+                student_db::update_student_set_subLevel($student->getStudentID(), $student->getFName(), $student->getLName(), $subLevel);
+            } else if($student->getSubtractionLevel() == 2){
+                $subLevel = 3;
+                student_db::update_student_set_subLevel($student->getStudentID(), $student->getFName(), $student->getLName(), $subLevel);
+            }
+        } else if($right >= 7 && $type == "multiplication"){
+            if($student->getMultiplicationLevel() == 1 || $student->getMultiplicationLevel() == 0){
+                $multLevel = 2;
+                student_db::update_student_set_multLevel($student->getStudentID(), $student->getFName(), $student->getLName(), $multLevel);
+            } else if($student->getMultiplicationLevel() == 2){
+                $multLevel = 3;
+                student_db::update_student_set_multLevel($student->getStudentID(), $student->getFName(), $student->getLName(), $multLevel);
+            }
+        } else {
+            if($student->getDivisionLevel() == 1 || $student->getDivisionLevel() == 0){
+                $divLevel = 2;
+                student_db::update_student_set_divLevel($student->getStudentID(), $student->getFName(), $student->getLName(), $divLevel);
+            } else if($student->getDivisionLevel() == 2){
+                $divLevel = 3;
+                student_db::update_student_set_divLevel($student->getStudentID(), $student->getFName(), $student->getLName(), $divLevel);
+            }
+        }
+            
         include('view/testResults.php');
         die();
         break;
