@@ -35,23 +35,7 @@
 
                 </table><br>
                 
-                <table>
-                    <tr>
- 
-                    <th>&nbsp;</th>
-                    <th>Answer</th>
-
-                </tr>
-                <?php foreach ($_SESSION['answerSheet'] as $key => $value) : ?>
-                    <tr>
-
-                        <td><?php echo $key; ?></td>
-                        <td>&nbsp;</td>
-
-                    </tr>
-                <?php endforeach; ?>
-
-                </table><br>
+               
                 
             </div>  
                 

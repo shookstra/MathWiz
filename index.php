@@ -190,8 +190,7 @@ switch ($action) {
         break;
     case 'drillResults' :
         $student = student_db::get_student_by_id($_SESSION['loggedInUser']->getStudentID());
-        $wrong[] = $_SESSION['wrong'];
-        $right = $_SESSION['right'];
+        
         
         $right = 0;
         $wrong = [];
@@ -219,58 +218,39 @@ switch ($action) {
         $answerSheet9 = filter_input(INPUT_POST, 'b09');
         $answerSheet10 = filter_input(INPUT_POST, 'b10');
         
-        if($answer1 == $answerSheet[1]) {
+        if($answer1 == $answerSheet1) {
             $right++;
-        } else {
-            $wrong[1] = $q[1];
         }
-        if($answer2 == $answerSheet[2]) {
+        if($answer2 == $answerSheet2) {
             $right++;
-        }else {
-            $wrong[2] = $q[2];
         }
-        if($answer3 == $answerSheet[3]) {
+        if($answer3 == $answerSheet3) {
             $right++;
-        }else {
-            $wrong[3] = $q[3];
         }
-        if($answer4 == $answerSheet[4]) {
+        if($answer4 == $answerSheet4) {
             $right++;
-        }else {
-            $wrong[4] = $q[4];
         }
-        if($answer5 == $answerSheet[5]) {
+        if($answer5 == $answerSheet5) {
             $right++;
-        }else {
-            $wrong[5] = $q[5];
         }
-        if($answer6 == $answerSheet[6]) {
+        if($answer6 == $answerSheet6) {
             $right++;
-        }else {
-            $wrong[6] = $q[6];
         }
-        if($answer7 == $answerSheet[7]) {
+        if($answer7 == $answerSheet7) {
             $right++;
-        }else {
-            $wrong[7] = $q[7];
         }
-        if($answer8 == $answerSheet[8]) {
+        if($answer8 == $answerSheet8) {
             $right++;
-        }else {
-            $wrong[8] = $q[8];
         }
-        if($answer9 == $answerSheet[9]) {
+        if($answer9 == $answerSheet9) {
             $right++;
-        }else {
-            $wrong[9] = $q[9];
         }
-        if($answer10 == $answerSheet[10]) {
+        if($answer10 == $answerSheet10) {
             $right++;
-        }else {
-            $wrong[10] = $q[10];
         }
+        
 
-        var_dump($answerSheet1);
+       
         include('view/drillResults.php');
         die();
         break;
